@@ -1,0 +1,17 @@
+<div>
+
+  <h3 class="text-center">Create new Book</h3>
+  <hr>
+  <form ng-submit="vm.createBook()">
+    <label for="title">Title</label>
+    <input class="form-control" type="text" ng-model="vm.createTitle" id="title">
+    <label for="author">Author</label>
+    <input class="form-control" type="text" ng-model="vm.createAuthor" id="author">
+    <label for="category">Category</label>
+    <input class="form-control" type="text" ng-model="vm.createCategory" id="category"><br>
+    <input class="btn btn-success" type="submit" value="Save"></button>
+  </form>
+  <br>
+  <button class="btn btn-primary" ui-sref="admin.books">Back</button>
+
+</div>

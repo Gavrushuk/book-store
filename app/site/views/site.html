@@ -1,0 +1,77 @@
+<div class="header br-nav-b">
+  <ul class="nav nav-pills">
+    <li role="presentation" ui-sref-active="active"><a ui-sref="site.books">Books</a></li>
+    <li role="presentation" class="pull-right"><a ui-sref="auth.signin">Sign in</a></li>
+    <li role="presentation" class="pull-right"><a ui-sref="auth.signup">Sign up</a></li>
+  </ul>
+</div>
+
+<div class="container books-block">
+  <div class="col-sm-5 col-lg-3">
+    <div class="text-center">
+      <h3>Menu:</h3>
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+      <input type="text" class="form-control" aria-describedby="basic-addon1" ng-model="search">
+    </div><br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-shopping-cart rm-i"></i><a href="" ng-click="vm.clickCartFunc()">Cart<i class="fa lm-i" ng-class="{'fa-caret-right': vm.classArrowCart.arrowRight, 'fa-caret-down': vm.classArrowCart.arrowDown}"></i></a><span class="badge pull-right">{{vm.carts.length}}</span>
+      </div>
+      <div class="panel-body" ng-if="vm.classArrowCart.arrowDown && vm.carts.length > 0">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>BOOK</td>
+              <td>QTY</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="cart in vm.carts">
+              <td>
+                {{cart.booktitle}}
+              </td>
+              <td>
+                {{cart.query}}
+              </td>
+              <td>
+                <a ng-click="vm.deleteOneCart(cart.id)" class="btn btn-danger">
+                  <i class="glyphicon glyphicon-minus"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="btn btn-success pull-right" role="button" ui-sref="site.cart"><i class="glyphicon glyphicon-list rm-i"></i>Order</a>
+        <!--<a class="btn btn-danger" role="button" ng-click="vm.dropTable()">del</a>-->
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="" ng-click="vm.clickMenuFunc()">Categories<i class="fa lm-i" ng-class="{'fa-caret-right': vm.classArrow.arrowRight, 'fa-caret-down': vm.classArrow.arrowDown}"></i></a>
+      </div>
+      <div class="panel-body" ng-if="vm.classArrow.arrowDown">
+        <table class="table">
+          <tr ng-repeat="book in vm.categories">
+            <td>
+              <a ui-sref="site.category({id: book.category})">
+                {{book.category}}
+                <span class="badge pull-right">{{book.lengthCat}}</span>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-7 col-lg-9">
+    <div class="row">
+      <ui-view></ui-view>
+    </div>
+  </div>
+</div>
+
+<div class="footer br-nav-t">
+  <p class="text-center">&copy; 2017 Simple Solution and Co.<p>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="book-store">
+  <head>
+    <title>Book Store App</title>
+    <meta content="width=device-width,initial-scale=1" name=viewport>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/5536147799.js"></script>
+    <link rel="stylesheet" href="/style/style.css">
+    <base href="/">
+  </head>
+
+  <body ng-controller="MainCtrl as main">
+    <div ui-view></div>
+
+    <!-- ANGULAR -->      
+    <script src="/assets/angular/angular.min.js"></script>
+
+    <!-- UI-ROUTER -->    
+    <script src="/assets/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- WEBSQL -->    
+    <script src="/assets/angular-websql/angular-websql.js"></script>
+
+    <!-- MODULE -->
+    <script src="/app/app.js"></script>
+    <script src="/app/admin/admin.module.js"></script>
+    <script src="/app/site/site.module.js"></script>
+
+    <!-- SERVICES -->
+    <script src="/app/service.js"></script>
+    <script src="/app/auth.service.js"></script>
+    
+    <!-- CONTROLLERS -->
+    <script src="/app/admin/books/controllers/list.controller.js"></script>
+    <script src="/app/admin/books/controllers/edit.controller.js"></script>
+    <script src="/app/admin/books/controllers/create.controller.js"></script>
+    <script src="/app/admin/books/controllers/adminauth.controller.js"></script>
+    
+    <script src="/app/site/home/home.controller.js"></script>
+    <script src="/app/site/signin/signin.controller.js"></script>
+    <script src="/app/site/signup/signup.controller.js"></script>
+    <script src="/app/site/views/controllers/site.controller.js"></script>
+    <script src="/app/site/category/category.controller.js"></script>
+    <script src="/app/site/book/book.controller.js"></script>
+    <script src="/app/site/cart/cart.controller.js"></script>
+    
+  </body>
+</html>

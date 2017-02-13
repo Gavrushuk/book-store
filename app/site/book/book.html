@@ -1,0 +1,15 @@
+<div class="text-center">
+  <h3>{{vm.books[0].title}}</h3>
+</div>
+
+<div>
+  <div class="thumbnail">
+    <img ng-src="" class="image_book" alt="">
+    <div class="caption">
+      <h4><b>Title:</b> {{vm.books[0].title}}</h4>
+      <h4><b>Author:</b> {{vm.books[0].author}}</h4>
+      <h4><b>Category:</b> {{vm.books[0].category}}</h4>
+      <a ng-click="vm.queryParse(vm.books[0].id, vm.books[0].title)" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a>
+    </div>
+  </div>
+</div>

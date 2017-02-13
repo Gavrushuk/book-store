@@ -1,0 +1,29 @@
+<!--<div ng-if="vm.alertRegistr" class="alert alert-success alertRegistr" role="alert"><b>Well done!</b> Registration is success!</div>-->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center">SignUp</h3>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="vm.signUp()">
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control" id="firstName" ng-model="vm.firstNameSignUp"><br>
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" ng-model="vm.lastNameSignUp"><br>
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" ng-model="vm.emailSignUp"><br>
+      <label for="phone">Phone:</label>
+      <input type="phone" class="form-control" id="phone" ng-model="vm.phoneSignUp"><br>
+      <label for="login">Login:</label>
+      <input type="text" class="form-control" id="login" ng-model="vm.loginSignUp"><br>
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" ng-model="vm.passwordSignUp"><br>
+      <label for="confpassword">Confirm Password:</label>
+      <input type="password" class="form-control" id="confpassword" ng-model="vm.confirmPasswordSignUp"><hr>
+      <input type="submit" class="btn btn-success pull-left" value="SignUp">
+    </form>
+
+    <!--<a ng-click="vm.dropTable()" class="btn btn-danger">del</a>-->
+    <div class="clearfix"></div>
+  </div>
+</div>

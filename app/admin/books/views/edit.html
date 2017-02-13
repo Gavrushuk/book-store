@@ -1,0 +1,17 @@
+<div>
+
+  <h3 class="text-center">Edit Book</h3>
+  <hr>
+  <form ng-submit="vm.editBook(vm.books[0].id, vm.books[0].title, vm.books[0].author, vm.books[0].category)">
+    <label for="title">Title</label>
+    <input class="form-control" type="text" ng-model="vm.books[0].title" id="title">
+    <label for="author">Author</label>
+    <input class="form-control" type="text" ng-model="vm.books[0].author" id="author">
+    <label for="category">Category</label>
+    <input class="form-control" type="text" ng-model="vm.books[0].category" id="category"><br>
+    <input class="btn btn-success" type="submit" value="Save"></button>
+  </form>
+  <br>
+  <button class="btn btn-primary" ng-click="vm.goBack()">Back</button>
+
+</div>

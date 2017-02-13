@@ -1,0 +1,36 @@
+<div class="text-center">
+  <h3>Order:</h3>
+</div>
+
+<div class="thumbnail">
+  <div class="caption">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>BOOK</td>
+          <td>QTY</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cart in vm.carts | filter: search">
+          <td>{{cart.booktitle}}</td>
+          <td>{{cart.query}}</td>
+          <td>
+            <a href="" ng-click="vm.deleteOneCart(cart.id)" class="btn btn-danger"><i class="glyphicon glyphicon-minus mr-i"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <form>
+      <label for="login">Email:</label>
+      <input class="form-control" type="email" id="email" ng-model="vm.emailOrder"><br>
+      <label for="firstName">First name:</label>
+      <input class="form-control" type="text" id="firstName" ng-model="vm.firstNameOrder"><hr>
+      <label for="lastName">Last name:</label>
+      <input class="form-control" type="text" id="lastName" ng-model="vm.lastNameOrder"><hr>
+      <label for="phone">Phone:</label>
+      <input class="form-control" type="phone" id="phone" ng-model="vm.phoneOrder"><hr>
+    </form>
+    <a href="" ng-click="vm.buy()" class="btn btn-success"><i class="glyphicon glyphicon-usd mr-i"></i>Buy</a>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<a ng-click="vm.logOut()" class="btn btn-danger logout">LogOut</a>
+<div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h5 class="pull-left"><b>List Books</b></h5> 
+      <a class="btn btn-primary pull-right" ui-sref="admin.books.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a><br><br>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" class="form-control" ng-class="{ red: lengthArr.length == 0 }" placeholder="Search" aria-describedby="basic-addon1" ng-model="search">
+      </div>
+    </div>
+    
+    <div class="panel-body">
+      <table class="table">
+
+        <thead>
+          <tr>
+            <td ng-click="vm.sortFunc('title')" style="cursor: pointer"><b>Title</b></td>
+            <td ng-click="vm.sortFunc('author')"><b>Author</b></td>
+            <td ng-click="vm.sortFunc('category')"><b>Category</b></td>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr ng-repeat="book in lengthArr = ( vm.books | filter: search | orderBy: main.sortStr )">
+            <td ng-bind="book.title"></td>
+            <td ng-bind="book.author"></td>
+            <td ng-bind="book.category"></td>
+            <td>
+              <a ng-click="vm.deleteBook(book.id)" class="btn btn-danger">
+                <i class="glyphicon glyphicon-minus"></i>
+              </a>
+            </td>
+            <td>
+              <a ui-sref="admin.books.edit({id: book.id})" class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      
+      </table>
+    </div>
+  
+  </div>
+
+  <div class="text-center" ng-bind="'Довжина масиву: ' + lengthArr.length"></div>
+
+</div>
