@@ -3,7 +3,8 @@ angular.module('book-store',
     'ui.router',
     'book-store.admin',
     'book-store.site',
-    'angular-websql'
+    'angular-websql',
+    'ngMessages'
   ])
   .controller('MainCtrl', ['$scope', function() {
     var vm = this;
