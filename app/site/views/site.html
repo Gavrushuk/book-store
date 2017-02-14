@@ -1,8 +1,9 @@
 <div class="header br-nav-b">
   <ul class="nav nav-pills">
     <li role="presentation" ui-sref-active="active"><a ui-sref="site.books">Books</a></li>
-    <li role="presentation" class="pull-right"><a ui-sref="auth.signin">Sign in</a></li>
     <li role="presentation" class="pull-right"><a ui-sref="auth.signup">Sign up</a></li>
+    <li role="presentation" class="pull-right"><a>{{vm.userName}}</a></li>
+    <li ng-if="vm.userControle" role="presentation" class="pull-right"><a ui-sref="auth.signin">Sign in</a></li>
   </ul>
 </div>
 

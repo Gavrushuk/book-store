@@ -3,15 +3,9 @@ angular.module('book-store.site')
     
     var vm = this;
 
-    vm.auth = false;
-/*
-    vm.createAdmin = function() {
-      AuthService
-        .createAdmin({
-          login: 'admin',
-          password: 'admin'
-        });
-  };*/
+    if (localStorage.userActive == 'true') {
+      $state.go('site.books');
+    }
 
     vm.signIn = function() {
       
@@ -24,11 +18,14 @@ angular.module('book-store.site')
           }
 
           if (vm.checkUserAuth.length == 0) {
-            vm.auth = false;
+
             console.log('Sorry. This user is not autoresation');
           
           } else {
-            vm.auth = true;
+
+            $state.go('site.books')
+            localStorage.setItem('userActive', true);
+            localStorage.setItem('user', vm.checkUserAuth[0].login);
             console.log('Autoresation is success! Welcome to site ' + vm.checkUserAuth[0].login);
 
           }

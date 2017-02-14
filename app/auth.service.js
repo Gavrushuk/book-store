@@ -92,7 +92,12 @@ angular.module('book-store')
           },
           password: password
         });
-      }/*,
+      },
+      
+      getByUser: function(login) {
+        return db.select('user', {login: login})
+      }
+        /*,
       
       createAdmin: function(admin) {
         return db.insert('admin', admin);

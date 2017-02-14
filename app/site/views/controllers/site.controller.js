@@ -1,8 +1,15 @@
 angular.module('book-store.site')
-  .controller('SiteCtrl', ['BookService', '$stateParams', '$http', '$scope', '$rootScope',
-   function (BookService, $stateParams, $http, $scope, $rootScope) {
+  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope',
+   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope) {
 
     var vm = this;
+
+    if (localStorage.userActive == 'true') {
+      vm.userName = localStorage.user;
+      vm.userControle = false;
+    } else {
+      vm.userControle = true;
+    }
 
     BookService
       .getAll()
