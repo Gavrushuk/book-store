@@ -2,7 +2,19 @@
   <ul class="nav nav-pills">
     <li role="presentation" ui-sref-active="active"><a ui-sref="site.books">Books</a></li>
     <li role="presentation" class="pull-right"><a ui-sref="auth.signup">Sign up</a></li>
-    <li role="presentation" class="pull-right"><a>{{vm.userName}}</a></li>
+    <li ng-if="vm.userControle != true" role="presentation" class="pull-right">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          {{vm.userName}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="">Profile</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a ng-click="vm.logOut()">LogOut</a></li>
+        </ul>
+      </div>
+    </li>
     <li ng-if="vm.userControle" role="presentation" class="pull-right"><a ui-sref="auth.signin">Sign in</a></li>
   </ul>
 </div>

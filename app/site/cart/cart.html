@@ -21,7 +21,9 @@
         </tr>
       </tbody>
     </table>
-    <form>
+    <p ng-if="!vm.userControle" class="red">* If you want make order please go to signIn!!!</p>
+    <p ng-if="vm.carts.length == 0" class="red">* Please choose a goods!!!</p>
+    <form ng-if="vm.userControle && (vm.carts.length != 0)">
       <label for="login">Email:</label>
       <input class="form-control" type="email" id="email" ng-model="vm.emailOrder"><br>
       <label for="firstName">First name:</label>
@@ -31,6 +33,6 @@
       <label for="phone">Phone:</label>
       <input class="form-control" type="phone" id="phone" ng-model="vm.phoneOrder"><hr>
     </form>
-    <a href="" ng-click="vm.buy()" class="btn btn-success"><i class="glyphicon glyphicon-usd mr-i"></i>Buy</a>
+    <a ng-disabled="!vm.userControle || (vm.carts.length == 0)" ng-click="vm.buy()" class="btn btn-success"><i class="glyphicon glyphicon-usd mr-i"></i>Buy</a>
   </div>
 </div>

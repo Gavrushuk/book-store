@@ -95,7 +95,7 @@ angular.module('book-store')
       },
       
       getByUser: function(login) {
-        return db.select('user', {login: login})
+        return db.select('users', {login: login})
       }
         /*,
       

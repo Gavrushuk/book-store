@@ -1,7 +1,27 @@
 angular.module('book-store.site')
-  .controller('CartCtrl', ['BookService', '$rootScope', function(BookService, $rootScope) {
+  .controller('CartCtrl', ['BookService', 'AuthService', '$rootScope', function(BookService, AuthService, $rootScope) {
     
     var vm = this;
+
+    if (localStorage.userActive == 'true') {
+      vm.userControle = true;
+
+      AuthService
+        .getByUser(localStorage.user)
+        .then(function(res) {
+          vm.userOrderInfo = [];
+          for (var i = 0; i < res.rows.length; i++) {
+            vm.userOrderInfo.push(res.rows.item(i));
+          }
+          vm.emailOrder = vm.userOrderInfo[0].email;
+          vm.firstNameOrder = vm.userOrderInfo[0].first_name;
+          vm.lastNameOrder = vm.userOrderInfo[0].last_name;
+          vm.phoneOrder = vm.userOrderInfo[0].phone;
+        });
+
+    } else {
+      vm.userControle = false;
+    }
 
     vm.getAllCarts = function () {
       BookService
@@ -45,15 +65,17 @@ angular.module('book-store.site')
               query: res.rows.item(i).query,
               email: vm.emailOrder,
               name: vm.firstNameOrder + ' ' + vm.lastNameOrder,
-              phone: vm.phoneOrder
+              phone: vm.phoneOrder + ''
             });
           }
           
-          BookService
-            .addToOrder(vm.cartsOrder);
+          if (vm.carts.length != 0) {
+            BookService
+              .addToOrder(vm.cartsOrder);
+          }
+        
         });
 
-        vm.dropTable();
         $rootScope.$emit('updateCart');
     };
 

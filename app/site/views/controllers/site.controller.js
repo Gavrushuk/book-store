@@ -1,6 +1,6 @@
 angular.module('book-store.site')
-  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope',
-   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope) {
+  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope', '$state',
+   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope, $state) {
 
     var vm = this;
 
@@ -114,5 +114,11 @@ angular.module('book-store.site')
     }
 
     $rootScope.$on('updateCart', vm.getAllCarts);
+
+    vm.logOut = function() {
+      localStorage.setItem('userActive', false);
+      localStorage.removeItem('user');
+      $state.go('auth.signin');
+    }
     
   }]);
