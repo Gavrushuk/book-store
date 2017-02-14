@@ -4,7 +4,7 @@ angular.module('book-store.site')
     var vm = this;
 
     vm.signUp = function() {
-
+      if (vm.passwordSignUp == vm.confirmPasswordSignUp) {
         AuthService
           .checkUserLogin(vm.loginSignUp)
           .then(function(res) {
@@ -42,8 +42,12 @@ angular.module('book-store.site')
 
               });
           });
+
+      }
+      console.log('Errors');
           
     };
+  
 /*
     vm.dropTable = function() {
           AuthService

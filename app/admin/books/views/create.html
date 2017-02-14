@@ -2,13 +2,25 @@
 
   <h3 class="text-center">Create new Book</h3>
   <hr>
-  <form ng-submit="vm.createBook()">
+  <form ng-submit="vm.createBook()" name="createBook">
     <label for="title">Title</label>
-    <input class="form-control" type="text" ng-model="vm.createTitle" id="title">
+    <input class="form-control" type="text" ng-model="vm.createTitle" id="title" name="title">
+    <div ng-if="createBook.title.$touched" ng-messages="createBook.title.$error">
+      <div ng-message="required" class="red">* Please enter a value for this field.</div>
+    </div>
+
     <label for="author">Author</label>
-    <input class="form-control" type="text" ng-model="vm.createAuthor" id="author">
+    <input class="form-control" type="text" ng-model="vm.createAuthor" id="author" name="author">
+    <div ng-if="createBook.author.$touched" ng-messages="createBook.author.$error">
+      <div ng-message="required" class="red">* Please enter a value for this field.</div>
+    </div>
+    
     <label for="category">Category</label>
-    <input class="form-control" type="text" ng-model="vm.createCategory" id="category"><br>
+    <input class="form-control" type="text" ng-model="vm.createCategory" id="category" name="category"><br>
+    <div ng-if="createBook.category.$touched" ng-messages="createBook.category.$error">
+      <div ng-message="required" class="red">* Please enter a value for this field.</div>
+    </div>
+    
     <input class="btn btn-success" type="submit" value="Save"></button>
   </form>
   <br>

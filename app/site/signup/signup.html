@@ -5,21 +5,53 @@
     <h3 class="panel-title text-center">SignUp</h3>
   </div>
   <div class="panel-body">
-    <form ng-submit="vm.signUp()">
+    <form ng-submit="vm.signUp()" name="userSignUp">
       <label for="firstName">First Name:</label>
-      <input type="text" class="form-control" id="firstName" ng-model="vm.firstNameSignUp"><br>
+      <input type="text" class="form-control" id="firstName" name="firstName" ng-model="vm.firstNameSignUp" required>
+      <div ng-if="userSignUp.firstName.$touched" ng-messages="userSignUp.firstName.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      </div>
+      <br>
       <label for="lastName">Last Name:</label>
-      <input type="text" class="form-control" id="lastName" ng-model="vm.lastNameSignUp"><br>
+      <input type="text" class="form-control" id="lastName" name="lastName" ng-model="vm.lastNameSignUp" required>
+      <div ng-if="userSignUp.lastName.$touched" ng-messages="userSignUp.lastName.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      </div>
+      <br>
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" ng-model="vm.emailSignUp"><br>
+      <input type="email" class="form-control" id="email" name="email" ng-model="vm.emailSignUp" required>
+      <div ng-if="userSignUp.email.$touched" ng-messages="userSignUp.email.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+        <div ng-message="email" class="red">* Format '123@ada.com'.</div>
+      </div>
+      <br>
       <label for="phone">Phone:</label>
-      <input type="phone" class="form-control" id="phone" ng-model="vm.phoneSignUp"><br>
+      <input type="phone" class="form-control" id="phone" name="phone" maxlength="13" ng-model="vm.phoneSignUp" required>
+      <div ng-if="userSignUp.phone.$touched" ng-messages="userSignUp.phone.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      </div>
+      <br>
       <label for="login">Login:</label>
-      <input type="text" class="form-control" id="login" ng-model="vm.loginSignUp"><br>
+      <input type="text" class="form-control" id="login" name="login" maxlength="20" ng-model="vm.loginSignUp" required>
+      <div ng-if="userSignUp.login.$touched" ng-messages="userSignUp.login.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      </div>
+      <br>
       <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" ng-model="vm.passwordSignUp"><br>
+      <input type="password" class="form-control" id="password" minlength="5" maxlength="15" name="password" ng-model="vm.passwordSignUp" required>
+      <div ng-if="userSignUp.password.$touched" ng-messages="userSignUp.password.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+        <div ng-message="minlength" class="red">* Min lenght password 5.</div>
+      </div>
+      <br>
       <label for="confpassword">Confirm Password:</label>
-      <input type="password" class="form-control" id="confpassword" ng-model="vm.confirmPasswordSignUp"><hr>
+      <input type="password" class="form-control" id="confpassword" minlength="5" maxlength="15" name="confpassword" ng-model="vm.confirmPasswordSignUp" required>
+      <div ng-if="userSignUp.confpassword.$touched" ng-messages="userSignUp.confpassword.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+        <div ng-message="minlength" class="red">* Min lenght password 5.</div>
+        <div ng-if="vm.passwordSignUp != vm.confirmPasswordSignUp" class="red">* Confirm password not is pasword.</div>
+      </div>
+      <hr>
       <input type="submit" class="btn btn-success pull-left" value="SignUp">
     </form>
 

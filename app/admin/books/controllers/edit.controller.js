@@ -9,17 +9,18 @@ angular.module('book-store.admin')
         for(var i=0; i < res.rows.length; i++){
           vm.books.push(res.rows.item(i));
         }
+        
+        vm.editBook = function() {
+          BookService
+            .editBook(vm.books[0].id, {
+              title: vm.books[0].title,
+              author: vm.books[0].author,
+              category: vm.books[0].category
+          });
+          vm.goBack();
+        }
+
       });
-      
-    this.editBook = function(id, title, author, category) {
-      BookService
-        .editBook(id, {
-          title: title,
-          author: author,
-          category: category
-      });
-      vm.goBack();
-    }
 
     vm.goBack = function() {
       $state.transitionTo("admin.books");

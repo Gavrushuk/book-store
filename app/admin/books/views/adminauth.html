@@ -3,11 +3,20 @@
     <h3 class="panel-title text-center">SignIn</h3>
   </div>
   <div class="panel-body">
-    <form ng-submit="vm.signInAdmin()">
+    <form ng-submit="vm.signInAdmin()" name="adminSignIn">
       <label for="login">Login:</label>
-      <input class="form-control" type="text" id="login" ng-model="vm.loginAdmin"><br>
+      <input class="form-control" type="text" id="login" name="login" ng-model="vm.loginAdmin" required>
+      <div ng-if="adminSignIn.login.$touched" ng-messages="adminSignIn.login.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      </div><br>
+
       <label for="password">Password:</label>
-      <input class="form-control" type="text" id="password" ng-model="vm.passwordAdmin"><hr>
+      <input class="form-control" type="text" id="password" name="password" ng-model="vm.passwordAdmin" required>
+      <div ng-if="adminSignIn.password.$touched" ng-messages="adminSignIn.password.$error">
+        <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      </div>
+      <hr>
+
       <input class="btn btn-success pull-left" type="submit" value="SignIn">
     </form>
     <div class="clearfix"></div>
