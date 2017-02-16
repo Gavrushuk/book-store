@@ -15,7 +15,8 @@ angular.module('book-store.admin')
             .editBook(vm.books[0].id, {
               title: vm.books[0].title,
               author: vm.books[0].author,
-              category: vm.books[0].category
+              category: vm.books[0].category,
+              price: vm.books[0].price
           });
           vm.goBack();
         }

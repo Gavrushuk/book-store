@@ -2,7 +2,7 @@ angular.module('book-store')
   .factory('BookService', ['$http', '$webSql', function($http, $webSql) {
     
     var db = $webSql.openDatabase('books', '1.0', 'Test DB', 2 * 1024 * 1024);
-
+/*
     db.createTable('books', {
       "id": {
         "type": "INTEGER",
@@ -20,6 +20,10 @@ angular.module('book-store')
       },
       "category": {
         "type": "TEXT",
+        "null": "NOT NULL"
+      },
+      "price": {
+        "type": "FLOAT",
         "null": "NOT NULL"
       }
       
@@ -43,41 +47,58 @@ angular.module('book-store')
       "query": {
         "type": "INTEGER",
         "null": "NOT NULL"
+      },
+      "price": {
+        "type": "FLOAT",
+        "null": "NOT NULL"
       }
-    });
-
-     db.createTable('order', {
+    });*/
+    
+     db.createTable('order_products', {
       "id": {
         "type": "INTEGER",
         "null": "NOT NULL",
         "primary": true, 
         "auto_increment": true
       },
-      "orderid": {
+      "order_id": {
         "type": "INTEGER",
         "null": "NOT NULL"
       },
-      "bookid": {
+      "book_id": {
         "type": "INTEGER",
         "null": "NOT NULL"
       },
-      "booktitle": {
-        "type": "TEXT",
-        "null": "NOT NULL"
-      },
-      "query": {
+      "qty": {
         "type": "INTEGER",
         "null": "NOT NULL"
       },
-      "email": {
-        "type": "TEXT",
+      "price": {
+        "type": "FLOAT",
+        "null": "NOT NULL"
+      }
+    });
+
+    db.createTable('order', {
+      "id": {
+        "type": "INTEGER",
+        "null": "NOT NULL",
+        "primary": true, 
+        "auto_increment": true
+      },
+      "user_id": {
+        "type": "INTEGER",
         "null": "NOT NULL"
       },
-      "phone": {
-        "type": "TEXT",
+      "created_time": {
+        "type": "DATA",
         "null": "NOT NULL"
       },
-      "name": {
+      "updated_time": {
+        "type": "DATA",
+        "null": "NOT NULL"
+      },
+      "status": {
         "type": "TEXT",
         "null": "NOT NULL"
       }
@@ -129,11 +150,15 @@ angular.module('book-store')
       },
       
       addToOrder: function(order) {
-       	return db.bulkInsert('order', order);
+       	return db.insert('order', order);
+      },
+
+      addToOrderProduct: function(order) {
+       	return db.bulkInsert('order_products', order);
       },
 
       dropTable: function(id) {
-       	return db.dropTable('cart');
+       	return db.dropTable('');
       }
 
     }

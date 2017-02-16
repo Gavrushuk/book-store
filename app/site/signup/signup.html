@@ -27,9 +27,10 @@
       </div>
       <br>
       <label for="phone">Phone:</label>
-      <input type="phone" class="form-control" id="phone" name="phone" maxlength="13" ng-model="vm.phoneSignUp" required>
+      <input type="tel" class="form-control" id="phone" name="phone" maxlength="13" ng-model="vm.phoneSignUp" required>
       <div ng-if="userSignUp.phone.$touched" ng-messages="userSignUp.phone.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
+        <div ng-message="tel" class="red">* Please write correct phone number.</div>
       </div>
       <br>
       <label for="login">Login:</label>

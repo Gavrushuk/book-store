@@ -2,6 +2,8 @@
   <h3>Books:</h3>
 </div>
 
+<!--<a ng-click="vm.dropTable()" class="btn btn-danger">del</a>-->
+
 <div class="flex">
   <div class="col-xs-12 col-sm-12 col-md-4" ng-repeat="book in vm.books | filter: search">
     <div class="thumbnail">
@@ -9,7 +11,8 @@
         <h4>Title: {{book.title}}</h4>
         <h5>Author: {{book.author}}</h5>
         <h5>Category: {{book.category}}</h5>
-        <p><a ui-sref="site.book({id: book.id})" class="btn btn-primary" role="button">Info</a> <a ng-click="vm.queryParse(book.id, book.title)" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a></p>
+        <h3 class="pull-right red"><b>Price:</b> {{book.price}} $</h3>
+        <p><a ui-sref="site.book({id: book.id})" class="btn btn-primary" role="button">Info</a> <a ng-click="vm.queryParse(book.id, book.title, book.price)" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a></p>
       </div>
     </div>
   </div>

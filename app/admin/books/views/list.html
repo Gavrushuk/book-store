@@ -17,9 +17,10 @@
 
         <thead>
           <tr>
-            <td ng-click="vm.sortFunc('title')" style="cursor: pointer"><b>Title</b></td>
+            <td ng-click="vm.sortFunc('title')"><b>Title</b></td>
             <td ng-click="vm.sortFunc('author')"><b>Author</b></td>
             <td ng-click="vm.sortFunc('category')"><b>Category</b></td>
+            <td ng-click="vm.sortFunc('price')"><b>Price</b></td>
           </tr>
         </thead>
         
@@ -28,6 +29,7 @@
             <td ng-bind="book.title"></td>
             <td ng-bind="book.author"></td>
             <td ng-bind="book.category"></td>
+            <td ng-bind="book.price"></td>
             <td>
               <a ng-click="vm.deleteBook(book.id)" class="btn btn-danger">
                 <i class="glyphicon glyphicon-minus"></i>

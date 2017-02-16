@@ -117,7 +117,7 @@ angular.module('book-store.site')
 
     vm.logOut = function() {
       localStorage.setItem('userActive', false);
-      localStorage.removeItem('user');
+      localStorage.setItem('user', 'not found');
       $state.go('auth.signin');
     }
     

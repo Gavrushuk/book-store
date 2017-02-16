@@ -38,6 +38,7 @@
             <tr>
               <td>BOOK</td>
               <td>QTY</td>
+              <td>PRICE</td>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +48,9 @@
               </td>
               <td>
                 {{cart.query}}
+              </td>
+              <td>
+                {{cart.price}} $
               </td>
               <td>
                 <a ng-click="vm.deleteOneCart(cart.id)" class="btn btn-danger">

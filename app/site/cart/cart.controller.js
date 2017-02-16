@@ -1,24 +1,12 @@
 angular.module('book-store.site')
-  .controller('CartCtrl', ['BookService', 'AuthService', '$rootScope', function(BookService, AuthService, $rootScope) {
+  .controller('CartCtrl', ['BookService', 'AuthService', '$rootScope', '$state', function(BookService, AuthService, $rootScope, $state) {
     
     var vm = this;
 
+    var date = new Date();
+
     if (localStorage.userActive == 'true') {
       vm.userControle = true;
-
-      AuthService
-        .getByUser(localStorage.user)
-        .then(function(res) {
-          vm.userOrderInfo = [];
-          for (var i = 0; i < res.rows.length; i++) {
-            vm.userOrderInfo.push(res.rows.item(i));
-          }
-          vm.emailOrder = vm.userOrderInfo[0].email;
-          vm.firstNameOrder = vm.userOrderInfo[0].first_name;
-          vm.lastNameOrder = vm.userOrderInfo[0].last_name;
-          vm.phoneOrder = vm.userOrderInfo[0].phone;
-        });
-
     } else {
       vm.userControle = false;
     }
@@ -47,33 +35,53 @@ angular.module('book-store.site')
 
     $rootScope.$emit('updateCart');
 
-    vm.dropTable = function() {
-      BookService
-        .dropTable()
-    }
-
     vm.buy = function() {
-      BookService
-        .getAllCarts()
-        .then( function(res) {
-          vm.cartsOrder = [];
-          for (var i = 0; i<res.rows.length; i++) {
-            vm.cartsOrder.push({
-              orderid: res.rows.item(i).id,
-              bookid: res.rows.item(i).bookid,
-              booktitle: res.rows.item(i).booktitle,
-              query: res.rows.item(i).query,
-              email: vm.emailOrder,
-              name: vm.firstNameOrder + ' ' + vm.lastNameOrder,
-              phone: vm.phoneOrder + ''
-            });
+      
+      AuthService
+        .getByUser(localStorage.user)
+        .then(function(res) {
+          for (var i = 0; i < res.rows.length; i++) {
+            vm.userId = res.rows.item(i).id;
           }
-          
-          if (vm.carts.length != 0) {
+
+          if (vm.carts.length != 0 && localStorage.userActive == 'true') {
+
             BookService
-              .addToOrder(vm.cartsOrder);
-          }
-        
+              .addToOrder(
+                {
+                  user_id: vm.userId,
+                  created_time: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes(),
+                  updated_time: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes(),
+                  status: 'Will be check'
+                })
+              .then(function(res) {
+
+                vm.orderId = res.insertId;
+                
+                BookService
+                  .getAllCarts()
+                  .then( function(res) {
+                    vm.order_product = [];
+                    for (var i = 0; i<res.rows.length; i++) {
+                      vm.order_product.push({
+                        order_id: vm.orderId,
+                        book_id: res.rows.item(i).bookid,
+                        qty: res.rows.item(i).query,
+                        price: res.rows.item(i).price
+                      });
+                    }
+                    
+                    BookService
+                      .addToOrderProduct(vm.order_product);
+
+                      $state.go('site.books');
+                  
+                  });
+                  
+              });
+
+            };
+
         });
 
         $rootScope.$emit('updateCart');

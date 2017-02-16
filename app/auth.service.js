@@ -2,7 +2,7 @@ angular.module('book-store')
   .factory('AuthService', ['$http', '$webSql', function($http, $webSql) {
 
     var db = $webSql.openDatabase('books', '1.0', 'Test DB', 2 * 1024 * 1024);
-
+/*
     db.createTable('admin', {
       "id": {
         "type": "INTEGER",
@@ -19,7 +19,8 @@ angular.module('book-store')
         "null": "NOT NULL"
       }
     });
-
+    */
+/*
     db.createTable('users', {
       "id": {
         "type": "INTEGER",
@@ -52,7 +53,7 @@ angular.module('book-store')
         "null": "NOT NULL"
       }
     });
-
+*/
     return {
       getAllUsers: function() {
         return db.select('users');

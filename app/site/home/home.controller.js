@@ -12,7 +12,7 @@ angular.module('book-store.site')
         }
       });
 
-    vm.queryParse = function(bookid, booktitle) {
+    vm.queryParse = function(bookid, booktitle, price) {
 
       BookService
         .queryParse(bookid)
@@ -29,7 +29,8 @@ angular.module('book-store.site')
                 {
                   bookid: bookid,
                   booktitle: booktitle,
-                  query: 1
+                  query: 1,
+                  price: price
                 }
               );
 
@@ -38,7 +39,8 @@ angular.module('book-store.site')
             BookService
               .updateQuery(vm.query[0].id,
                 {
-                  query: vm.query[0].query + 1
+                  query: vm.query[0].query + 1,
+                  price: vm.query[0].price + price
                 }
               );
               
@@ -48,5 +50,10 @@ angular.module('book-store.site')
 
         })
     };
+
+    vm.dropTable = function() {
+      BookService
+        .dropTable()
+    }
       
   }]);

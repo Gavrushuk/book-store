@@ -9,7 +9,8 @@
       <h4><b>Title:</b> {{vm.books[0].title}}</h4>
       <h4><b>Author:</b> {{vm.books[0].author}}</h4>
       <h4><b>Category:</b> {{vm.books[0].category}}</h4>
-      <a ng-click="vm.queryParse(vm.books[0].id, vm.books[0].title)" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a>
+      <h3 class="pull-right red"><b>Price:</b> {{vm.books[0].price}} $</h3>
+      <a ng-click="vm.queryParse()" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a>
     </div>
   </div>
 </div>

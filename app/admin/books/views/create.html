@@ -4,22 +4,30 @@
   <hr>
   <form ng-submit="vm.createBook()" name="createBook">
     <label for="title">Title</label>
-    <input class="form-control" type="text" ng-model="vm.createTitle" id="title" name="title">
+    <input class="form-control" type="text" ng-model="vm.createTitle" id="title" name="title" required>
     <div ng-if="createBook.title.$touched" ng-messages="createBook.title.$error">
       <div ng-message="required" class="red">* Please enter a value for this field.</div>
     </div>
 
     <label for="author">Author</label>
-    <input class="form-control" type="text" ng-model="vm.createAuthor" id="author" name="author">
+    <input class="form-control" type="text" ng-model="vm.createAuthor" id="author" name="author" required>
     <div ng-if="createBook.author.$touched" ng-messages="createBook.author.$error">
       <div ng-message="required" class="red">* Please enter a value for this field.</div>
     </div>
     
     <label for="category">Category</label>
-    <input class="form-control" type="text" ng-model="vm.createCategory" id="category" name="category"><br>
+    <input class="form-control" type="text" ng-model="vm.createCategory" id="category" name="category" required>
     <div ng-if="createBook.category.$touched" ng-messages="createBook.category.$error">
       <div ng-message="required" class="red">* Please enter a value for this field.</div>
     </div>
+
+    <label for="category">Price</label>
+    <input class="form-control" type="number" ng-model="vm.createPrice" id="price" name="price" required>
+    <div ng-if="createBook.price.$touched" ng-messages="createBook.price.$error">
+      <div ng-message="required" class="red">* Please enter a value for this field.</div>
+      <div ng-message="number" class="red">* Price not have letter, only number.</div>
+    </div>
+    <br>
     
     <input class="btn btn-success" type="submit" value="Save"></button>
   </form>

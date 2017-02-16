@@ -9,6 +9,7 @@ angular.module('book-store.admin')
             title: this.createTitle,
             author: this.createAuthor,
             category: this.createCategory,
+            price: this.createPrice,
           }
         ).then(function(result) {
           vm.goBack(); 

@@ -3,7 +3,7 @@ angular.module('book-store.admin', [])
     $stateProvider
       .state('admin', {
         url: '/admin',
-        templateUrl: '/app/admin/admin-nav/admin.html',
+        templateUrl: '/app/admin/admin-nav/admin.html'
       })
       .state('admin.auth', {
         url: '/auth',
