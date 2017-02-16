@@ -77,6 +77,8 @@ angular.module('book-store.site')
                     BookService
                       .deleteAllElementsCart();
 
+                    $rootScope.$emit('updateCart');
+
                       $state.go('site.books');
                   
                   });
