@@ -56,7 +56,7 @@ angular.module('book-store')
 */
     return {
       getAllUsers: function() {
-        return db.select('users');
+        return db.selectAll('users');
       },
 
       createUser: function(user) {
@@ -97,6 +97,10 @@ angular.module('book-store')
       
       getByUser: function(login) {
         return db.select('users', {login: login})
+      },
+
+      getByUserId: function(id) {
+        return db.select('users', {id: id})
       }
         /*,
       

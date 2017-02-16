@@ -1,12 +1,10 @@
 <a ng-click="vm.logOut()" class="btn btn-danger logout">LogOut</a>
 <a ui-sref="admin.orders" class="btn btn-info orders">Orders</a>
+
 <div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h5 class="pull-left"><b>List Books</b></h5> 
-      <a class="btn btn-primary pull-right" ui-sref="admin.books.create">
-        <i class="glyphicon glyphicon-plus"></i>
-      </a><br><br>
+      <h5 class="pull-left rm-i"><b>List Orders</b></h5> 
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
         <input type="text" class="form-control" ng-class="{ red: lengthArr.length == 0 }" placeholder="Search" aria-describedby="basic-addon1" ng-model="search">
@@ -18,21 +16,27 @@
 
         <thead>
           <tr>
-            <td ng-click="vm.sortFunc('title')"><b>Title</b></td>
-            <td ng-click="vm.sortFunc('author')"><b>Author</b></td>
-            <td ng-click="vm.sortFunc('category')"><b>Category</b></td>
-            <td ng-click="vm.sortFunc('price')"><b>Price</b></td>
+            <td ng-click="vm.sortFunc('title')"><b>First Name</b></td>
+            <td ng-click="vm.sortFunc('author')"><b>Last Name</b></td>
+            <td ng-click="vm.sortFunc('category')"><b>Email</b></td>
+            <td ng-click="vm.sortFunc('price')"><b>Phone</b></td>
+            <td ng-click="vm.sortFunc('author')"><b>Created</b></td>
+            <td ng-click="vm.sortFunc('category')"><b>Updated</b></td>
+            <td ng-click="vm.sortFunc('price')"><b>Status</b></td>
           </tr>
         </thead>
         
         <tbody>
-          <tr ng-repeat="book in lengthArr = ( vm.books | filter: search | orderBy: main.sortStr )">
-            <td ng-bind="book.title"></td>
-            <td ng-bind="book.author"></td>
-            <td ng-bind="book.category"></td>
-            <td >{{book.price}} $</td>
+          <tr ng-repeat="order in lengthArr = ( vm.orders | filter: search | orderBy: main.sortStr )">
+            <td ng-bind="order.user.first_name"></td>
+            <td ng-bind="order.user.last_name"></td>
+            <td ng-bind="order.user.email"></td>
+            <td ng-bind="order.user.phone"></td>
+            <td ng-bind="order.created_time"></td>
+            <td ng-bind="order.updated_time"></td>
+            <td ng-bind="order.status"></td>
             <td>
-              <a ng-click="vm.deleteBook(book.id)" class="btn btn-danger">
+              <a ng-click="vm.deleteOrder(order.id)" class="btn btn-danger">
                 <i class="glyphicon glyphicon-minus"></i>
               </a>
             </td>

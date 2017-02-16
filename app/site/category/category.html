@@ -9,7 +9,7 @@
         <h3>Title: {{book.title}}</h3>
         <h4>Author: {{book.author}}</h4>
         <h4>Category: {{book.category}}</h4>
-        <h3 class="pull-right red"><b>Price:</b> {{book.price}} $</h3>
+        <h5 class="pull-right red"><b>Price:</b> {{book.price}} $</h5>
         <p><a ui-sref="site.book({id: book.id})" class="btn btn-primary" role="button">Info</a> <a ng-click="vm.queryParse(book.id, book.title, book.price)" class="btn btn-default" role="button"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a></p>
       </div>
     </div>

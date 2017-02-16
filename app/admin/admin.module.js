@@ -11,6 +11,7 @@ angular.module('book-store.admin', [])
         controller: 'AdminCtrl',
         controllerAs: 'vm'
       })
+//Books
       .state('admin.books', {
         url: '/books',
         templateUrl: '/app/admin/books/views/list.html',
@@ -34,5 +35,24 @@ angular.module('book-store.admin', [])
       .state('admin.books.delete', {
         url: '/delete/:id',
         parent: 'admin',
+      })
+//Orders
+      .state('admin.orders', {
+        url: '/orders',
+        templateUrl: '/app/admin/orders/views/listOrder.html',
+        controller: 'ListOrderCtrl',
+        controllerAs: 'vm',
+      })
+      .state('admin.orders.edit', {
+        url: '/edit/:id',
+        parent: 'admin',
+        templateUrl: '/app/admin/orders/views/editOrder.html',
+        controller: 'EditOrderCtrl',
+        controllerAs: 'vm'
+      })
+      .state('admin.orders.delete', {
+        url: '/delete/:id',
+        parent: 'admin',
       });
+
   }]);

@@ -52,8 +52,8 @@ angular.module('book-store')
         "type": "FLOAT",
         "null": "NOT NULL"
       }
-    });*/
-    
+    });
+      
      db.createTable('order_products', {
       "id": {
         "type": "INTEGER",
@@ -103,8 +103,9 @@ angular.module('book-store')
         "null": "NOT NULL"
       }
     });
-		
+*/		
     return {
+//Books
       getAll: function() {
         return db.selectAll('books');
       },
@@ -128,7 +129,7 @@ angular.module('book-store')
       deleteBook: function(id) {
         return db.del('books', { id: id });
       },
-      
+//Carts
       getAllCarts: function() {
         return db.selectAll('cart');
       },
@@ -138,27 +139,55 @@ angular.module('book-store')
       },
 
       deleteCart: function(id) {
-       	return db.del('cart', {id: id});
+       	return db.del('cart', { id: id });
       },
 
       queryParse: function(id) {
-       	return db.select('cart', {bookid: id});
+       	return db.select('cart', { bookid: id });
       },
 
       updateQuery: function(id, data) {
         return db.update('cart', data, { id: id });
       },
-      
+//Orders      
       addToOrder: function(order) {
        	return db.insert('order', order);
       },
 
+      getAllOrders: function() {
+       	return db.selectAll('order');
+      },
+
+      updateOrder: function(id, data) {
+       	return db.update('order', data, { id: id });
+      },
+
+      deleteOrder: function(id) {
+       	return db.del('order', { id: id });
+      },
+//Order_products
       addToOrderProduct: function(order) {
        	return db.bulkInsert('order_products', order);
       },
 
+      getAllOrderProducts: function() {
+       	return db.selectAll('order_products');
+      },
+
+      getOrderProductsByOrderId: function(id) {
+       	return db.select('order_products', { order_id: id });
+      },
+
+      updateOrderProduct: function(id, data) {
+       	return db.update('order_products', data, { id: id });
+      },
+
+      deleteOrderProduct: function(id) {
+       	return db.del('order_products', { id: id });
+      },
+//Delete table
       dropTable: function(id) {
-       	return db.dropTable('');
+       	return db.dropTable('order_products');
       }
 
     }
