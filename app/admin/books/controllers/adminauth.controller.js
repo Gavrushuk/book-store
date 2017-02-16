@@ -3,6 +3,8 @@ angular.module('book-store.admin')
 
     var vm = this;
 
+    vm.check;
+
     if (localStorage.auth == 'true') {
       $state.go('admin.books');
     }
@@ -18,7 +20,7 @@ angular.module('book-store.admin')
           }
 
           if (vm.isAdmin.length == 0) {
-            console.log('You are not Admin!!!')
+        
           } else {
             localStorage.setItem('auth', true);
             $state.go('admin.books');

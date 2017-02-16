@@ -74,6 +74,9 @@ angular.module('book-store.site')
                     BookService
                       .addToOrderProduct(vm.order_product);
 
+                    BookService
+                      .deleteAllElementsCart();
+
                       $state.go('site.books');
                   
                   });

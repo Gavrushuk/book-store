@@ -11,14 +11,17 @@
       </div><br>
 
       <label for="password">Password:</label>
-      <input class="form-control" type="text" id="password" name="password" ng-model="vm.passwordAdmin" required>
+      <input class="form-control" type="password" id="password" name="password" ng-model="vm.passwordAdmin" required>
       <div ng-if="adminSignIn.password.$touched" ng-messages="adminSignIn.password.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>
-      <hr>
+      <br>
+
+       <p ng-if="vm.isAdmin.length == 0" class="red">* You are not admin</p><br>
 
       <input class="btn btn-success pull-left" type="submit" value="SignIn">
     </form>
+
     <div class="clearfix"></div>
   </div>
 </div>

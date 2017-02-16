@@ -104,6 +104,8 @@ angular.module('book-store')
       }
     });
 */		
+
+  console.log(db)
     return {
 //Books
       getAll: function() {
@@ -148,6 +150,10 @@ angular.module('book-store')
 
       updateQuery: function(id, data) {
         return db.update('cart', data, { id: id });
+      },
+
+      deleteAllElementsCart: function() {
+        return db.executeQuery("DELETE FROM 'cart'");
       },
 //Orders      
       addToOrder: function(order) {
