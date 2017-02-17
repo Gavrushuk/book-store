@@ -13,7 +13,7 @@
       </div>
       <br>
       <label for="password">Password:</label>
-      <input class="form-control" type="passwors" id="password" name="password" maxlength="20" ng-model="vm.passwordSignIn" required>
+      <input class="form-control" type="password" id="password" name="password" maxlength="20" ng-model="vm.passwordSignIn" required>
       <div ng-if="userSignIn.password.$touched" ng-messages="userSignIn.password.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>

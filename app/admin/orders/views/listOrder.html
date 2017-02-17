@@ -34,15 +34,16 @@
             <td ng-bind="order.user.phone"></td>
             <td ng-bind="order.created_time"></td>
             <td ng-bind="order.updated_time"></td>
-            <td ng-bind="order.status"></td>
+            <td ng-dblclick="vm.statusUpdate(order.id, order.status)" style="cursor: pointer; user-select: none"><i class="glyphicon" ng-class="{'glyphicon-time red': order.status == 'Will be check', 'glyphicon-pencil orange': order.status == 'In check', 'glyphicon-ok green': order.status == 'Send'}"></i> {{order.status}}</td>
             <td>
-              <a ng-click="vm.deleteOrder(order.id)" class="btn btn-danger">
-                <i class="glyphicon glyphicon-minus"></i>
+              <a ui-sref="admin.orders.products({id: order.id})" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span class="badge lm-i pull-right" ng-bind="order.length_products"></span>
               </a>
             </td>
             <td>
-              <a ui-sref="admin.books.edit({id: book.id})" class="btn btn-info">
-                <i class="glyphicon glyphicon-pencil"></i>
+              <a ng-click="vm.deleteOrder(order.id)" class="btn btn-danger">
+                <i class="glyphicon glyphicon-minus"></i>
               </a>
             </td>
           </tr>
@@ -53,6 +54,6 @@
   
   </div>
 
-  <div class="text-center" ng-bind="'Довжина масиву: ' + lengthArr.length"></div>
+  <div class="text-center" ng-bind="'Кількість замовлень: ' + lengthArr.length"></div>
 
 </div>

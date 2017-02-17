@@ -41,17 +41,17 @@ angular.module('book-store.admin', [])
         url: '/orders',
         templateUrl: '/app/admin/orders/views/listOrder.html',
         controller: 'ListOrderCtrl',
-        controllerAs: 'vm',
+        controllerAs: 'vm'
       })
-      .state('admin.orders.edit', {
-        url: '/edit/:id',
+      .state('admin.orders.products', {
+        url: '/orders/products/:id',
         parent: 'admin',
-        templateUrl: '/app/admin/orders/views/editOrder.html',
-        controller: 'EditOrderCtrl',
+        templateUrl: '/app/admin/orders/views/listOrderProducts.html',
+        controller: 'ListOrderProductsCtrl',
         controllerAs: 'vm'
       })
       .state('admin.orders.delete', {
-        url: '/delete/:id',
+        url: '/orders/delete/:id',
         parent: 'admin',
       });
 

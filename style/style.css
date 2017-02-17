@@ -3,6 +3,14 @@
   color: red;
 }
 
+.orange {
+  color: orange;
+}
+
+.green {
+  color: green;
+}
+
 .image_book {
   width: 240px !important;
   height: 200px !important; 

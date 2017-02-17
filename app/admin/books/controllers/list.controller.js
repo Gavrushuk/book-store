@@ -7,6 +7,11 @@ angular.module('book-store.admin')
 
     var vm = this;
 
+    vm.buttonTest = function() {
+      vm.fileImg = document.getElementById('file_img').files[0].state;
+      console.log(vm.fileImg);
+    }
+
     vm.logOut = function() {
       localStorage.setItem('auth', false);
       $state.go('admin.auth');

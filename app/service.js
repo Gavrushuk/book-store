@@ -105,7 +105,6 @@ angular.module('book-store')
     });
 */		
 
-  console.log(db)
     return {
 //Books
       getAll: function() {
@@ -162,6 +161,10 @@ angular.module('book-store')
 
       getAllOrders: function() {
        	return db.selectAll('order');
+      },
+
+      getOrderById: function(id) {
+       	return db.select('order', { id: id });
       },
 
       updateOrder: function(id, data) {
