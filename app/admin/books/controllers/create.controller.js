@@ -2,21 +2,19 @@ angular.module('book-store.admin')
   .controller('BookCreateCtrl', ['BookService', '$state', function (BookService, $state) {
     var vm = this;
 
-    this.createBook = function () {
+    vm.createBook = function () {
+
       BookService
         .createBook(
           {
-            title: this.createTitle,
-            author: this.createAuthor,
-            category: this.createCategory,
-            price: this.createPrice,
+            title: vm.createTitle,
+            author: vm.createAuthor,
+            category: vm.createCategory,
+            price: vm.createPrice,
           }
         ).then(function(result) {
-          vm.goBack(); 
+          $state.go('admin.books') 
         })
     };
     
-    this.goBack = function() {
-      $state.transitionTo("admin.books");
-    }
   }]);

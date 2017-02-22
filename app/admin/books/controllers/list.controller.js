@@ -1,6 +1,6 @@
 angular.module('book-store.admin')
   .controller('BookListCtrl', ['BookService', '$stateParams', '$state', function(BookService, $stateParams, $state) {
-
+    
     if (localStorage.auth == 'false') {
       $state.go('admin.auth');
     }

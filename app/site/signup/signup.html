@@ -2,7 +2,6 @@
 
 <div class="panel panel-default">
   <div class="panel-heading text-center">
-    <a ui-sref="site.books" class="pull-left"><i class="fa fa-home">Home</i></a>
     <h3 class="panel-title">SignUp</h3>
   </div>
   <div class="panel-body">
@@ -54,10 +53,10 @@
         <div ng-if="vm.passwordSignUp != vm.confirmPasswordSignUp" class="red">* Confirm password not is pasword.</div>
       </div>
       <hr>
-      <input type="submit" class="btn btn-success pull-left" value="SignUp">
+      <input type="submit" class="btn btn-success pull-right" value="SignUp">
     </form>
 
-    <!--<a ng-click="vm.dropTable()" class="btn btn-danger">del</a>-->
+    <a ui-sref="site.books" class="btn btn-primary pull-left"><i class="fa fa-arrow-left rm-i"></i>Back</a>
     <div class="clearfix"></div>
   </div>
 </div>

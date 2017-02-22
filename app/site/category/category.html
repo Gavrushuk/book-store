@@ -1,9 +1,11 @@
-<div class="text-center">
-  <h3>Books in {{vm.category}}:</h3>
+<div class="panel panel-default name_list">
+  <div class="panel-heading text-center">
+    <h3 class="panel-title">Books in {{vm.category}}:</h3>
+  </div>
 </div>
 
-<div class="flex">
-  <div class="col-xs-12 col-sm-12 col-md-4" ng-repeat="book in vm.books | filter: search">
+<ul class="flex books">
+  <li class="col-xs-12 col-sm-12 col-md-4" ng-repeat="book in vm.books | filter: search">
     <div class="thumbnail">
       <div class="caption">
         <h3>Title: {{book.title}}</h3>
@@ -13,5 +15,5 @@
         <p><a ui-sref="site.book({id: book.id})" class="btn btn-primary" role="button">Info</a> <a ng-click="vm.queryParse(book.id, book.title, book.price)" class="btn btn-default" role="button"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a></p>
       </div>
     </div>
-  </div>
-</div>
+  </li>
+</ul>

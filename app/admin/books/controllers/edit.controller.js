@@ -18,12 +18,9 @@ angular.module('book-store.admin')
               category: vm.books[0].category,
               price: vm.books[0].price
           });
-          vm.goBack();
+          $state.transitionTo("admin.books");
         }
 
       });
-
-    vm.goBack = function() {
-      $state.transitionTo("admin.books");
-    }
+      
   }]);

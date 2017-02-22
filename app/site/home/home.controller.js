@@ -55,5 +55,5 @@ angular.module('book-store.site')
       BookService
         .dropTable()
     }
-      
+
   }]);

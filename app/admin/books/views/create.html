@@ -21,14 +21,14 @@
       <div ng-message="required" class="red">* Please enter a value for this field.</div>
     </div>
 
-    <label for="category">Price</label>
+    <label for="price">Price</label>
     <input class="form-control" type="number" ng-model="vm.createPrice" id="price" name="price" required>
     <div ng-if="createBook.price.$touched" ng-messages="createBook.price.$error">
       <div ng-message="required" class="red">* Please enter a value for this field.</div>
       <div ng-message="number" class="red">* Price not have letter, only number.</div>
     </div>
     <br>
-    
+
     <input class="btn btn-success" type="submit" value="Save"></button>
   </form>
   <br>

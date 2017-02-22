@@ -1,5 +1,7 @@
-<div class="text-center">
-  <h3>{{vm.books[0].title}}</h3>
+<div class="panel panel-default name_list">
+  <div class="panel-heading text-center">
+    <h3 class="panel-title">{{vm.books[0].title}}:</h3>
+  </div>
 </div>
 
 <div>
@@ -9,6 +11,7 @@
       <h4><b>Title:</b> {{vm.books[0].title}}</h4>
       <h4><b>Author:</b> {{vm.books[0].author}}</h4>
       <h4><b>Category:</b> {{vm.books[0].category}}</h4>
+      <h4><b>Description:</b> {{vm.books[0].description}}</h4>
       <h5 class="pull-right red"><b>Price:</b> {{vm.books[0].price}} $</h5>
       <a ng-click="vm.queryParse()" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a>
     </div>

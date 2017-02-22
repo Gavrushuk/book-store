@@ -1,44 +1,44 @@
 <div class="header br-nav-b">
   <ul class="nav nav-pills">
-    <li role="presentation" ui-sref-active="active"><a ui-sref="site.books">Books</a></li>
-    <li role="presentation" class="pull-right"><a ui-sref="auth.signup">Sign up</a></li>
+    <li role="presentation"><a ui-sref="site.books" class="logo"><img src="/app/site/img/logo.png"></a></li>
+    <li role="presentation" ng-if="vm.userControle" class="pull-right"><a ui-sref="auth.signup"><i class="fa fa-user-plus rm-i"></i>Sign up</a></li>
     <li ng-if="vm.userControle != true" role="presentation" class="pull-right">
       <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          {{vm.userName}}
+        <button class="btn btn-primary dropdown-toggle login_btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <i class="fa fa-user"></i> {{vm.userName}}
           <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="">Profile</a></li>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+          <li><a href=""><i class="fa fa-user rm-i"></i>Profile</a></li>
           <li role="separator" class="divider"></li>
-          <li><a ng-click="vm.logOut()">LogOut</a></li>
+          <li><a href="" ng-click="vm.logOut()"><i class="fa fa-sign-out rm-i"></i>LogOut</a></li>
         </ul>
       </div>
     </li>
-    <li ng-if="vm.userControle" role="presentation" class="pull-right"><a ui-sref="auth.signin">Sign in</a></li>
+    <li ng-if="vm.userControle" role="presentation" class="pull-right"><a ui-sref="auth.signin"><i class="fa fa-sign-in rm-i"></i>Sign in</a></li>
   </ul>
 </div>
 
 <div class="container books-block">
-  <div class="col-sm-5 col-lg-3">
-    <div class="text-center">
-      <h3>Menu:</h3>
-    </div>
+  <div class="col-sm-5 col-lg-3 menu">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
-      <input type="text" class="form-control" aria-describedby="basic-addon1" ng-model="search">
+      <input type="text" class="form-control search_panel" aria-describedby="basic-addon1" ng-model="search">
     </div><br>
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <i class="fa fa-shopping-cart rm-i"></i><a href="" ng-click="vm.clickCartFunc()">Cart<i class="fa lm-i" ng-class="{'fa-caret-right': vm.classArrowCart.arrowRight, 'fa-caret-down': vm.classArrowCart.arrowDown}"></i></a><span class="badge pull-right">{{vm.carts.length}}</span>
-      </div>
-      <div class="panel-body" ng-if="vm.classArrowCart.arrowDown && vm.carts.length > 0">
+      <a href="" ng-click="vm.clickCartFunc()">
+        <div class="panel-heading panel-categories">
+          <h5><i class="fa fa-shopping-cart rm-i"></i>Cart<i class="fa lm-i" ng-class="{'fa-caret-right': vm.classArrowCart.arrowRight, 'fa-caret-down': vm.classArrowCart.arrowDown}"></i><span class="badge pull-right">{{vm.carts.length}}</span></5>
+        </div>
+      </a>
+      <div class="panel-body cart_product" ng-if="vm.classArrowCart.arrowDown && vm.carts.length > 0">
         <table class="table">
           <thead>
             <tr>
-              <td>BOOK</td>
-              <td>QTY</td>
-              <td>PRICE</td>
+              <th>BOOK</th>
+              <th>QTY</th>
+              <th>PRICE</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -60,21 +60,25 @@
             </tr>
           </tbody>
         </table>
-        <a class="btn btn-success pull-right" role="button" ui-sref="site.cart"><i class="glyphicon glyphicon-list rm-i"></i>Order</a>
+        <a class="btn btn-success pull-left" role="button" ui-sref="site.cart"><i class="glyphicon glyphicon-list rm-i"></i>Order</a>
         <!--<a class="btn btn-danger" role="button" ng-click="vm.dropTable()">del</a>-->
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <a href="" ng-click="vm.clickMenuFunc()">Categories<i class="fa lm-i" ng-class="{'fa-caret-right': vm.classArrow.arrowRight, 'fa-caret-down': vm.classArrow.arrowDown}"></i></a>
-      </div>
-      <div class="panel-body" ng-if="vm.classArrow.arrowDown">
+      <a href="" ng-click="vm.clickMenuFunc()">
+        <div class="panel-heading panel-categories">
+          <h5><i class="glyphicon glyphicon-th-list rm-i"></i>Categories<i class="fa pull-right" ng-class="{'fa-caret-right': vm.classArrow.arrowRight, 'fa-caret-down': vm.classArrow.arrowDown}"></i></h5>
+        </div>
+      </a>
+      <div class="panel-body menu_category" ng-if="vm.classArrow.arrowDown">
         <table class="table">
           <tr ng-repeat="book in vm.categories">
-            <td>
+            <td ui-sref-active="active_menu">
               <a ui-sref="site.category({id: book.category})">
-                {{book.category}}
-                <span class="badge pull-right">{{book.lengthCat}}</span>
+                <div class="category_name">
+                  {{book.category}}
+                  <span class="badge pull-right">{{book.lengthCat}}</span>
+                </div>
               </a>
             </td>
           </tr>

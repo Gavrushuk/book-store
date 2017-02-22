@@ -22,13 +22,18 @@ angular.module('book-store')
         "type": "TEXT",
         "null": "NOT NULL"
       },
+      "description": {
+        "type": "TEXT",
+        "null": "NOT NULL"
+      },
       "price": {
-        "type": "FLOAT",
+        "type": "INTEGER",
         "null": "NOT NULL"
       }
       
     });
-
+*/
+/*
     db.createTable('cart', {
       "id": {
         "type": "INTEGER",
@@ -196,7 +201,7 @@ angular.module('book-store')
       },
 //Delete table
       dropTable: function(id) {
-       	return db.dropTable('order_products');
+       	return db.dropTable('books');
       }
 
     }

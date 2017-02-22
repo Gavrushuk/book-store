@@ -119,6 +119,9 @@ angular.module('book-store.site')
       localStorage.setItem('userActive', false);
       localStorage.setItem('user', 'not found');
       $state.go('auth.signin');
+      
+      BookService
+        .deleteAllElementsCart();
     }
     
   }]);

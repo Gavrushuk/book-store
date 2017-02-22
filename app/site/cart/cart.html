@@ -1,15 +1,17 @@
-<div class="text-center">
-  <h3>Order:</h3>
+<div class="panel panel-default name_list">
+  <div class="panel-heading text-center">
+    <h3 class="panel-title">Order:</h3>
+  </div>
 </div>
 
-<div class="thumbnail">
-  <div class="caption">
+<div class="thumbnail cart_product">
     <table class="table">
       <thead>
         <tr>
-          <td>BOOK</td>
-          <td>QTY</td>
-          <td>PRICE</td>
+          <th>BOOK</th>
+          <th>QTY</th>
+          <th>PRICE</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -26,5 +28,4 @@
     <p ng-if="!vm.userControle" class="red">* If you want make order please go to signIn!!!</p>
     <p ng-if="vm.carts.length == 0" class="red">* Please choose a goods!!!</p>
     <a ng-disabled="!vm.userControle || (vm.carts.length == 0)" ng-click="vm.buy()" class="btn btn-success"><i class="glyphicon glyphicon-usd mr-i"></i>Buy</a>
-  </div>
 </div>
