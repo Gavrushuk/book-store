@@ -27,7 +27,7 @@
         </thead>
         
         <tbody>
-          <tr ng-repeat="order in lengthArr = ( vm.orders | filter: search | orderBy: main.sortStr )">
+          <tr ng-repeat="order in lengthArr = ( vm.orders | filter: search | orderBy: '-created_time' )">
             <td ng-bind="order.user.first_name"></td>
             <td ng-bind="order.user.last_name"></td>
             <td ng-bind="order.user.email"></td>

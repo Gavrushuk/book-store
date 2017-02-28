@@ -2,6 +2,10 @@ angular.module('book-store.site')
   .controller('SignUpCtrl', ['$state', 'AuthService', function($state, AuthService) {
     
     var vm = this;
+    
+    vm.checkUserAdmin = {
+      status: ''
+    }
 
     vm.signUp = function() {
       if (vm.passwordSignUp == vm.confirmPasswordSignUp) {
@@ -23,16 +27,20 @@ angular.module('book-store.site')
                 
                 if (vm.loginCreated.length == 0 || vm.phoneCreated.length == 0) {
     
-                  AuthService
+                AuthService
                   .createUser({
                     first_name: vm.firstNameSignUp,
                     last_name: vm.lastNameSignUp,
                     email: vm.emailSignUp,
                     phone: vm.phoneSignUp,
                     login: vm.loginSignUp,
-                    password: vm.passwordSignUp
+                    password: vm.passwordSignUp,
+                    status: vm.checkUserAdmin.status
                   });
-                  console.log('Success');
+
+                  localStorage.setItem('alert', 1);
+
+                  $state.go('auth.signin');
     
                 } else {
 
@@ -43,16 +51,13 @@ angular.module('book-store.site')
               });
           });
 
+      } else {
+
+        console.log('Errors');
+
       }
-      console.log('Errors');
           
     };
   
-/*
-    vm.dropTable = function() {
-          AuthService
-            .dropTable();
-        }
-*/
 
   }]);

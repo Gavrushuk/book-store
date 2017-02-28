@@ -19,6 +19,12 @@ angular.module('book-store.site')
           for (var i=0; i<res.rows.length; i++) {
             vm.carts.push(res.rows.item(i));
           }
+
+          vm.totalPrice = 0;
+
+          for (var i = 0; i < vm.carts.length; i++) {
+            vm.totalPrice += +vm.carts[i].price 
+          }
         });
     }
     vm.getAllCarts();

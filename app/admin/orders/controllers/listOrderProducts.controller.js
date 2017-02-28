@@ -2,6 +2,15 @@ angular.module('book-store.admin')
   .controller('ListOrderProductsCtrl', ['BookService', 'AuthService', '$state', '$stateParams', function(BookService, AuthService, $state, $stateParams) {
     var vm = this;
 
+    if (localStorage.auth == 'false') {
+      $state.go('admin.auth');
+    }
+
+    vm.logOut = function() {
+      localStorage.setItem('auth', false);
+      $state.go('admin.auth');
+    }
+
     BookService
       .getOrderProductsByOrderId($stateParams.id)
       .then(function(res) {

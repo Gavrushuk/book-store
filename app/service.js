@@ -200,7 +200,7 @@ angular.module('book-store')
        	return db.del('order_products', { id: id });
       },
 //Delete table
-      dropTable: function(id) {
+      dropTable: function() {
        	return db.dropTable('books');
       }
 

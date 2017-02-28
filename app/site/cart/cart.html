@@ -18,9 +18,14 @@
         <tr ng-repeat="cart in vm.carts | filter: search">
           <td>{{cart.booktitle}}</td>
           <td>{{cart.query}}</td>
-          <td>{{cart.price}}</td>
+          <td>{{cart.price}} $</td>
           <td>
             <a href="" ng-click="vm.deleteOneCart(cart.id)" class="btn btn-danger"><i class="glyphicon glyphicon-minus mr-i"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <h4 class="red pull-right"><b>Total:</b> {{vm.totalPrice}} $</h4>
           </td>
         </tr>
       </tbody>

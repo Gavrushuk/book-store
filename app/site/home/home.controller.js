@@ -1,5 +1,5 @@
 angular.module('book-store.site')
-  .controller('HomeCtrl', ['BookService', '$rootScope', function(BookService, $rootScope) {
+  .controller('HomeCtrl', ['BookService', 'AuthService', '$rootScope', function(BookService, AuthService, $rootScope) {
     
     var vm = this;
 
@@ -52,8 +52,9 @@ angular.module('book-store.site')
     };
 
     vm.dropTable = function() {
-      BookService
-        .dropTable()
-    }
+      AuthService
+        .dropTableUsers();
+        console.log('delete');
+    };
 
   }]);

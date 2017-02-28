@@ -51,9 +51,13 @@ angular.module('book-store')
       "phone": {
         "type": "INTEGER",
         "null": "NOT NULL"
+      },
+      "status": {
+        "type": "TEXT",
+        "null": "NOT NULL"
       }
-    });
-*/
+    });*/
+
     return {
       getAllUsers: function() {
         return db.selectAll('users');
@@ -101,15 +105,15 @@ angular.module('book-store')
 
       getByUserId: function(id) {
         return db.select('users', {id: id})
-      }
+      },
         /*,
       
       createAdmin: function(admin) {
         return db.insert('admin', admin);
       },   
-
-      dropTable: function() {
-        return db.del('users');
-      }, */   
+*/
+      dropTableUsers: function() {
+        return db.dropTable('users');
+      }    
     }
   }]);

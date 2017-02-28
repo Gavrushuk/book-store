@@ -2,6 +2,10 @@ angular.module('book-store.admin')
   .controller('ListOrderCtrl', ['BookService', 'AuthService', '$state', function(BookService, AuthService, $state) {
     var vm = this;
 
+    if (localStorage.auth == 'false') {
+      $state.go('admin.auth');
+    }
+
     vm.logOut = function() {
       localStorage.setItem('auth', false);
       $state.go('admin.auth');

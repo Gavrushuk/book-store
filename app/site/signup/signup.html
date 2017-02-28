@@ -32,6 +32,13 @@
         <div ng-message="tel" class="red">* Please write correct phone number.</div>
       </div>
       <br>
+      <label >Status in system:</label><br>
+      <input type="radio" name="status" ng-model="vm.checkUserAdmin.status" value="Admin" required>Admin
+      <input type="radio" name="status" ng-model="vm.checkUserAdmin.status" value="User" required>User
+      <div ng-if="userSignUp.status.$touched" ng-messages="userSignUp.status.$error">
+        <div ng-message="required" class="red">* Please enter a value Admin or User.</div>
+      </div>
+      <br>
       <label for="login">Login:</label>
       <input type="text" class="form-control" id="login" name="login" maxlength="20" ng-model="vm.loginSignUp" required>
       <div ng-if="userSignUp.login.$touched" ng-messages="userSignUp.login.$error">

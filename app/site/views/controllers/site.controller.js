@@ -1,8 +1,18 @@
 angular.module('book-store.site')
-  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope', '$state',
-   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope, $state) {
+  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope', '$state','$timeout',
+   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope, $state, $timeout) {
 
     var vm = this;
+
+    localStorage.removeItem('alertOrder');
+
+    vm.showAlert = +localStorage.alert === 1;
+    vm.aletrSignIn = localStorage.alert;
+
+    $timeout(function() {
+      vm.showAlert = false;
+      localStorage.alert = 0;
+    }, 3000);
 
     if (localStorage.userActive == 'true') {
       vm.userName = localStorage.user;
@@ -118,6 +128,7 @@ angular.module('book-store.site')
     vm.logOut = function() {
       localStorage.setItem('userActive', false);
       localStorage.setItem('user', 'not found');
+      localStorage.setItem('status', 'not found');
       $state.go('auth.signin');
       
       BookService
