@@ -1,36 +1,23 @@
-<div class="panel panel-default name_list">
-  <div class="panel-heading text-center">
-    <h3 class="panel-title">Order:</h3>
+<md-content>
+  <md-list-item class="md-2-line" ng-repeat="cart in vm.carts">
+    <div class="md-list-item-text">
+      <h3><b>Title:</b> {{ cart.booktitle }} </h3>
+      <p><b>QTY:</b> {{ cart.query }} </p>
+      <p><b>Price:</b> {{ cart.price }} $</p>
+    </div>
+    <md-button class="md-secondary md-icon-button" ng-click="vm.deleteOneCart(cart.id)">
+      <md-icon class="material-icons red">delete</md-icon>
+    </md-button>
+  </md-list-item>
+  <div layout="row" layout-align="end center">
+    <h4 class="red total_money"><b>Total:</b> {{vm.totalPrice}} $</h4>
   </div>
-</div>
-
-<div class="thumbnail cart_product">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>BOOK</th>
-          <th>QTY</th>
-          <th>PRICE</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="cart in vm.carts | filter: search">
-          <td>{{cart.booktitle}}</td>
-          <td>{{cart.query}}</td>
-          <td>{{cart.price}} $</td>
-          <td>
-            <a href="" ng-click="vm.deleteOneCart(cart.id)" class="btn btn-danger"><i class="glyphicon glyphicon-minus mr-i"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4">
-            <h4 class="red pull-right"><b>Total:</b> {{vm.totalPrice}} $</h4>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p ng-if="!vm.userControle" class="red">* If you want make order please go to signIn!!!</p>
-    <p ng-if="vm.carts.length == 0" class="red">* Please choose a goods!!!</p>
-    <a ng-disabled="!vm.userControle || (vm.carts.length == 0)" ng-click="vm.buy()" class="btn btn-success"><i class="glyphicon glyphicon-usd mr-i"></i>Buy</a>
-</div>
+  <p ng-if="!vm.userControle" class="red">* If you want make order please go to signIn!!!</p>
+  <p ng-if="vm.carts.length == 0" class="red">* Please choose a goods!!!</p>
+  <div layout="row" layout-align="start center">
+    <md-button class="md-rised" ng-disabled="!vm.userControle || (vm.carts.length == 0)" ng-click="vm.buy()">
+      <md-icon class="material-icons">attach_money</md-icon>
+      Buy
+    </md-button>
+  </div>
+</md-content>

@@ -1,7 +1,18 @@
 angular.module('book-store.site')
-  .controller('HomeCtrl', ['BookService', 'AuthService', '$rootScope', function(BookService, AuthService, $rootScope) {
+  .controller('HomeCtrl', ['BookService', 'AuthService', '$rootScope', '$mdToast', '$scope', function(BookService, AuthService, $rootScope, $mdToast, $scope) {
     
     var vm = this;
+
+   // $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+
+    $scope.showSimpleToast = function(text) {
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(text)
+          .position('')
+          .hideDelay(3000)
+      );
+    };
 
     BookService
       .getAll()
@@ -45,6 +56,8 @@ angular.module('book-store.site')
               );
               
           }
+
+          $scope.showSimpleToast('Product added to cart!');
 
           $rootScope.$emit('updateCart');
 

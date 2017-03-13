@@ -11,6 +11,10 @@
   color: green;
 }
 
+.white {
+  color: white;
+}
+
 .image_book {
   width: 240px !important;
   height: 200px !important; 
@@ -177,6 +181,28 @@ ul {
 .alert_style {
   margin-top: 55px;
   margin-bottom: -60px;
+}
+
+.sidenav-mt {
+  position: fixed !important;
+  margin-top: 61px;
+}
+
+.fixed_header {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.btn_close_sidenav {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 100;
+}
+
+.total_money {
+  margin-right: 16px;
 }
 
 @media (min-width: 992px) {

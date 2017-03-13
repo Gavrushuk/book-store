@@ -1,6 +1,19 @@
 angular.module('book-store.site')
-  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope', '$state','$timeout',
-   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope, $state, $timeout) {
+  .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope', '$state','$timeout', '$mdSidenav',
+   function (BookService, AuthService, $stateParams, $http, $scope, $rootScope, $state, $timeout, $mdSidenav) {
+
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
+
+    function buildToggler(navID) {
+      return function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+          });
+      };
+    }
 
     var vm = this;
 

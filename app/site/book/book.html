@@ -1,19 +1,26 @@
-<div class="panel panel-default name_list">
+<!--<div class="panel panel-default name_list">
   <div class="panel-heading text-center">
     <h3 class="panel-title">{{vm.books[0].title}}:</h3>
   </div>
-</div>
+</div>-->
 
-<div>
-  <div class="thumbnail">
-    <img ng-src="" class="image_book" alt="">
-    <div class="caption">
-      <h4><b>Title:</b> {{vm.books[0].title}}</h4>
-      <h4><b>Author:</b> {{vm.books[0].author}}</h4>
-      <h4><b>Category:</b> {{vm.books[0].category}}</h4>
-      <h4><b>Description:</b> {{vm.books[0].description}}</h4>
-      <h5 class="pull-right red"><b>Price:</b> {{vm.books[0].price}} $</h5>
-      <a ng-click="vm.queryParse()" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a>
-    </div>
-  </div>
-</div>
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">{{vm.books[0].title}}</span>
+      <span class="md-subhead">{{vm.books[0].author}}</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <p>
+      The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+      two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+    </p>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="space-between center">
+    <p class="red">{{vm.books[0].price}} $</p>
+    <md-button ng-click="vm.queryParse()">
+      <md-icon class="material-icons">add_shopping_cart</md-icon>
+    </md-button>
+  </md-card-actions>
+</md-card>

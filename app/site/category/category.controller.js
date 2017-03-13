@@ -1,7 +1,16 @@
 angular.module('book-store.site')
-  .controller('CategoryCtrl', ['BookService', '$stateParams', '$rootScope', function (BookService, $stateParams, $rootScope) {
+  .controller('CategoryCtrl', ['BookService', '$stateParams', '$rootScope', '$scope', '$mdToast', function (BookService, $stateParams, $rootScope, $scope, $mdToast) {
     
     var vm = this;
+
+    $scope.showSimpleToast = function(text) {
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(text)
+          .position('')
+          .hideDelay(3000)
+      );
+    };
 
     vm.category = $stateParams.id;
 
@@ -48,6 +57,8 @@ angular.module('book-store.site')
               );
               
           }
+
+          $scope.showSimpleToast('Product added to cart!');
 
           $rootScope.$emit('updateCart');
 

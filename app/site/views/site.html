@@ -1,5 +1,110 @@
-<div class="alert alert-success alert_style" role="alert" ng-if="vm.showAlert"><b>Well done!!! Autoresation is success!</b></div>
+<div>
+  <!--SideNav-->
+  <md-sidenav class="md-sidenav-left md-whiteframe-4" md-component-id="left">
+ 
+    <div ng-click="toggleLeft()" class="btn_close_sidenav">
+      <md-icon class="material-icons white">clear</md-icon>  
+    </div>    
 
+    <!--User-->
+    <md-card>
+      <md-card-title>
+        <md-card-title-media>
+          <div class="md-media-sm card-media" layout>
+            <md-icon class="material-icons md-18">face</md-icon>
+          </div>
+        </md-card-title-media>
+        <md-card-title-text>
+          <span class="md-headline">{{vm.userName}}</span>
+          <a href="" class="md-subhead" ng-click="vm.logOut()"><span class="red">Logout</span></a>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+
+    <!--Cart-->
+    <md-content ng-hide="vm.carts.length == 0">
+
+      <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+          <h3>
+            <span>Cart</span>
+          </h3>
+        </div>
+      </md-toolbar>
+
+      <md-list-item class="md-2-line" ng-repeat="cart in vm.carts">
+        <div class="md-list-item-text">
+          <h3><b>Title:</b> {{ cart.booktitle }} </h3>
+          <p><b>QTY:</b> {{ cart.query }} </p>
+          <p><b>Price:</b> {{ cart.price }} $</p>
+        </div>
+        <md-button class="md-secondary md-icon-button" ng-click="vm.deleteOneCart(cart.id)">
+          <md-icon class="material-icons red">delete</md-icon>
+        </md-button>
+      </md-list-item>
+      <div layout="row" layout-align="center center">
+        <md-button class="md-raised" ng-click="toggleLeft()" ui-sref="site.cart">
+          <md-icon class="material-icons">assignment</md-icon>
+        </md-button>
+      </div>
+      
+    </md-content>
+
+    <!--Categories-->
+    <md-content>
+
+      <md-toolbar md-scroll-shrink ng-if="true">
+        <div class="md-toolbar-tools">
+          <h3>
+            <span>Categories</span>
+          </h3>
+        </div>
+      </md-toolbar>
+
+      <md-list-item ng-click="toggleLeft()" ng-repeat="book in vm.categories" ui-sref="site.category({id: book.category})">
+        <div class="md-list-item-text" layout="column">
+          {{ book.category }}
+        </div>
+      </md-list-item>
+
+    </md-content>
+
+  </md-sidenav>
+
+  <div layout="column" class="fixed_header">
+    <md-toolbar class="md-hue-2">
+
+        <div class="md-toolbar-tools" layout-align="space-between center">
+
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+            <md-icon class="material-icons">menu</md-icon>
+          </md-button>
+
+          <h2>Book Store</h2>
+
+          <md-button class="md-icon-button" aria-label="Settings" ui-sref="site.books">
+            <md-icon class="material-icons">home</md-icon>
+          </md-button>
+
+        </div>
+
+    </md-toolbar>
+    <md-content>
+
+      <ui-view></ui-view>
+
+    </md-content>
+  </div>
+</div>
+
+
+<md-sidenav>
+    
+    
+
+</md-sidenav>
+
+<!--
 <div class="header br-nav-b">
   <ul class="nav nav-pills">
     <li role="presentation"><a ui-sref="site.books" class="logo"><img src="/app/site/img/logo.png"></a></li>
@@ -12,6 +117,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
           <li><a href=""><i class="fa fa-user rm-i"></i>Profile</a></li>
+          <li><md-button ng-click="toggleLeft()">Open</md-button></li>
           <li role="separator" class="divider"></li>
           <li><a href="" ng-click="vm.logOut()"><i class="fa fa-sign-out rm-i"></i>LogOut</a></li>
         </ul>
@@ -20,6 +126,13 @@
     <li ng-if="vm.userControle" role="presentation" class="pull-right"><a ui-sref="auth.signin"><i class="fa fa-sign-in rm-i"></i>Sign in</a></li>
   </ul>
 </div>
+
+
+
+
+
+
+
 
 <div class="container books-block">
   <div class="col-sm-5 col-lg-3 menu">
@@ -63,7 +176,7 @@
           </tbody>
         </table>
         <a class="btn btn-success pull-left" role="button" ui-sref="site.cart"><i class="glyphicon glyphicon-list rm-i"></i>Order</a>
-        <!--<a class="btn btn-danger" role="button" ng-click="vm.dropTable()">del</a>-->
+        <a class="btn btn-danger" role="button" ng-click="vm.dropTable()">del</a>
       </div>
     </div>
     <div class="panel panel-default">
@@ -98,3 +211,4 @@
 <div class="footer br-nav-t">
   <p class="text-center">&copy; 2017 Simple Solution and Co.<p>
 </div>
+-->

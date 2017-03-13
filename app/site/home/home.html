@@ -1,21 +1,18 @@
-<div class="panel panel-default name_list">
-  <div class="panel-heading text-center">
-    <h3 class="panel-title">Books:</h3>
-  </div>
-</div>      
-
-<!--<a ng-click="vm.dropTable()" class="btn btn-danger">del</a>-->
-
-<ul class="flex books">
-  <li class="col-xs-12 col-sm-12 col-md-4" ng-repeat="book in vm.books | filter: search">
-    <div class="thumbnail">
-      <div class="caption">
-        <h4>Title: {{book.title}}</h4>
-        <h5>Author: {{book.author}}</h5>
-        <h5>Category: {{book.category}}</h5>
-        <h5 class="pull-right red"><b>Price:</b> {{book.price}} $</h5>
-        <p><a ui-sref="site.book({id: book.id})" class="btn btn-primary" role="button">Info</a> <a ng-click="vm.queryParse(book.id, book.title, book.price)" class="btn btn-default"><i class="fa fa-cart-plus rm-i"></i>Add to cart</a></p>
-      </div>
-    </div>
-  </li>
-</ul>
+<md-card ng-repeat="book in vm.books | filter: search">
+  <md-card-title ui-sref="site.book({id: book.id})">
+    <md-card-title-text>
+      <span class="md-headline">{{book.title}}</span>
+      <span class="md-subhead">{{book.author}}</span>
+      <span class="md-subhead">{{book.category}}</span>
+    </md-card-title-text>
+    <md-card-title-media>
+      <div class="md-media-sm card-media"></div>
+    </md-card-title-media>
+  </md-card-title>
+  <md-card-actions layout="row" layout-align="space-between center">
+    <p class="red">{{book.price}} $</p>
+    <md-button ng-click="vm.queryParse(book.id, book.title, book.price)">
+      <md-icon class="material-icons">add_shopping_cart</md-icon>
+    </md-button>
+  </md-card-actions>
+</md-card>

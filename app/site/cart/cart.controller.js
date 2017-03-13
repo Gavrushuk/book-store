@@ -1,9 +1,18 @@
 angular.module('book-store.site')
-  .controller('CartCtrl', ['BookService', 'AuthService', '$rootScope', '$state', function(BookService, AuthService, $rootScope, $state) {
+  .controller('CartCtrl', ['BookService', 'AuthService', '$rootScope', '$state', '$scope', '$mdToast', function(BookService, AuthService, $rootScope, $state, $scope, $mdToast) {
     
     var vm = this;
 
     var date = new Date();
+
+    $scope.showSimpleToast = function(text) {
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(text)
+          .position('')
+          .hideDelay(3000)
+      );
+    };
 
     if (localStorage.userActive == 'true') {
       vm.userControle = true;
@@ -85,7 +94,9 @@ angular.module('book-store.site')
 
                     $rootScope.$emit('updateCart');
 
-                      $state.go('site.books');
+                    $state.go('site.books');
+
+                    $scope.showSimpleToast('Buy is success! Pleas wait info!');
                   
                   });
                   
