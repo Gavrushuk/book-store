@@ -15,8 +15,8 @@
   <p ng-if="!vm.userControle" class="red">* If you want make order please go to signIn!!!</p>
   <p ng-if="vm.carts.length == 0" class="red">* Please choose a goods!!!</p>
   <div layout="row" layout-align="start center">
-    <md-button class="md-rised" ng-disabled="!vm.userControle || (vm.carts.length == 0)" ng-click="vm.buy()">
-      <md-icon class="material-icons">attach_money</md-icon>
+    <md-button class="md-rised green" ng-disabled="!vm.userControle || (vm.carts.length == 0)" ng-click="vm.buy()">
+      <md-icon class="material-icons green">attach_money</md-icon>
       Buy
     </md-button>
   </div>

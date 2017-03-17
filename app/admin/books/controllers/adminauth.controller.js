@@ -5,7 +5,7 @@ angular.module('book-store.admin')
 
     vm.check;
 
-    if (localStorage.status == 'Admin') {
+    if (localStorage.status == 'true') {
 
       if (localStorage.auth == 'true') {
         $state.go('admin.books');

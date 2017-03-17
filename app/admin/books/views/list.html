@@ -1,3 +1,28 @@
+<md-content layout-padding>
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">
+      <h3>
+        <span>Books</span>
+      </h3>
+    </div>
+  </md-toolbar>
+  <md-list-item class="md-2-line books_line_style" ng-repeat="book in lengthArr = ( vm.books | filter: search | orderBy: main.sortStr )">
+    <div class="md-list-item-text">
+      <h3><b>Title:</b> {{ book.title }} </h3>
+      <p><b>Author:</b> {{ book.author }} </p>
+      <p><b>Category:</b> {{ book.category }}</p>
+      <p><b>Price:</b> {{ book.price }} $</p>
+    </div>
+    <md-button class="md-secondary md-icon-button" ng-click="vm.deleteBook(book.id)">
+      <md-icon class="material-icons red">delete</md-icon>
+    </md-button>
+    <md-button class="md-secondary md-icon-button" ng-click="admin.books.edit({id: book.id})">
+      <md-icon class="material-icons blue">mode_edit</md-icon>
+    </md-button>
+  </md-list-item>
+</md-content>
+
+<!--
 <a ng-click="vm.logOut()" class="btn btn-danger logout">LogOut</a>
 <a ui-sref="admin.orders" class="btn btn-info orders">Orders</a>
 <div>
@@ -51,4 +76,4 @@
   
   <div class="text-center" ng-bind="'Кількість книг: ' + lengthArr.length"></div>
 
-</div>
+</div>-->

@@ -1,18 +1,20 @@
-<md-card ng-repeat="book in vm.books | filter: search">
-  <md-card-title ui-sref="site.book({id: book.id})">
-    <md-card-title-text>
-      <span class="md-headline">{{book.title}}</span>
-      <span class="md-subhead">{{book.author}}</span>
-      <span class="md-subhead">{{book.category}}</span>
-    </md-card-title-text>
-    <md-card-title-media>
-      <div class="md-media-sm card-media"></div>
-    </md-card-title-media>
-  </md-card-title>
-  <md-card-actions layout="row" layout-align="space-between center">
-    <p class="red">{{book.price}} $</p>
-    <md-button ng-click="vm.queryParse(book.id, book.title, book.price)">
-      <md-icon class="material-icons">add_shopping_cart</md-icon>
-    </md-button>
-  </md-card-actions>
-</md-card>
+<md-content layout="column">
+  <md-card ng-repeat="book in vm.books | filter: search" flex="50">
+    <md-card-title ui-sref="site.book({id: book.id})">
+      <md-card-title-text>
+        <span class="md-headline">{{book.title}}</span>
+        <span class="md-subhead">{{book.author}}</span>
+        <span class="md-subhead">{{book.category}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+        <div class="md-media-sm card-media"></div>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="space-between center">
+      <p class="red">{{book.price}} $</p>
+      <md-button ng-click="vm.queryParse(book.id, book.title, book.price)" class="green">
+        <md-icon class="material-icons green">add_shopping_cart</md-icon>
+      </md-button>
+    </md-card-actions>
+  </md-card>
+</md-content>

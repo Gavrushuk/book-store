@@ -2,6 +2,8 @@ angular.module('book-store.site')
   .controller('SiteCtrl', ['BookService', 'AuthService', '$stateParams', '$http', '$scope', '$rootScope', '$state','$timeout', '$mdSidenav',
    function (BookService, AuthService, $stateParams, $http, $scope, $rootScope, $state, $timeout, $mdSidenav) {
 
+    this.user = localStorage.userActive == 'false';
+
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
 

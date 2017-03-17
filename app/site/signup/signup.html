@@ -1,69 +1,80 @@
-<!--<div ng-if="vm.alertRegistr" class="alert alert-success alertRegistr" role="alert"><b>Well done!</b> Registration is success!</div>-->
-
-<div class="panel panel-default">
-  <div class="panel-heading text-center">
-    <h3 class="panel-title">SignUp</h3>
-  </div>
-  <div class="panel-body">
-    <form ng-submit="vm.signUp()" name="userSignUp">
+<md-content class="signup_control" layout-padding>
+  <form ng-submit="vm.signUp()" name="userSignUp">
+    <md-input-container class="md-icon-float md-block">
       <label for="firstName">First Name:</label>
-      <input type="text" class="form-control" id="firstName" name="firstName" ng-model="vm.firstNameSignUp" required>
+      <input type="text" id="firstName" name="firstName" ng-model="vm.firstNameSignUp" required>
       <div ng-if="userSignUp.firstName.$touched" ng-messages="userSignUp.firstName.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>
-      <br>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label for="lastName">Last Name:</label>
-      <input type="text" class="form-control" id="lastName" name="lastName" ng-model="vm.lastNameSignUp" required>
+      <input type="text" id="lastName" name="lastName" ng-model="vm.lastNameSignUp" required>
       <div ng-if="userSignUp.lastName.$touched" ng-messages="userSignUp.lastName.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>
-      <br>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" name="email" ng-model="vm.emailSignUp" required>
+      <input type="email" id="email" name="email" ng-model="vm.emailSignUp" required>
       <div ng-if="userSignUp.email.$touched" ng-messages="userSignUp.email.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
         <div ng-message="email" class="red">* Format '123@ada.com'.</div>
       </div>
-      <br>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label for="phone">Phone:</label>
-      <input type="tel" class="form-control" id="phone" name="phone" maxlength="13" ng-model="vm.phoneSignUp" required>
+      <input type="tel" id="phone" name="phone" maxlength="13" ng-model="vm.phoneSignUp" required>
       <div ng-if="userSignUp.phone.$touched" ng-messages="userSignUp.phone.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
         <div ng-message="tel" class="red">* Please write correct phone number.</div>
       </div>
-      <br>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label >Status in system:</label><br>
-      <input type="radio" name="status" ng-model="vm.checkUserAdmin.status" value="Admin" required>Admin
-      <input type="radio" name="status" ng-model="vm.checkUserAdmin.status" value="User" required>User
-      <div ng-if="userSignUp.status.$touched" ng-messages="userSignUp.status.$error">
-        <div ng-message="required" class="red">* Please enter a value Admin or User.</div>
-      </div>
-      <br>
+      <md-switch class="md-primary" name="special" ng-model="vm.checkUserAdmin.status" required>
+        Admin
+      </md-switch>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label for="login">Login:</label>
       <input type="text" class="form-control" id="login" name="login" maxlength="20" ng-model="vm.loginSignUp" required>
       <div ng-if="userSignUp.login.$touched" ng-messages="userSignUp.login.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>
-      <br>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" minlength="5" maxlength="15" name="password" ng-model="vm.passwordSignUp" required>
+      <input type="password" id="password" minlength="5" maxlength="15" name="password" ng-model="vm.passwordSignUp" required>
       <div ng-if="userSignUp.password.$touched" ng-messages="userSignUp.password.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
         <div ng-message="minlength" class="red">* Min lenght password 5.</div>
       </div>
-      <br>
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
       <label for="confpassword">Confirm Password:</label>
-      <input type="password" class="form-control" id="confpassword" minlength="5" maxlength="15" name="confpassword" ng-model="vm.confirmPasswordSignUp" required>
+      <input type="password" id="confpassword" minlength="5" maxlength="15" name="confpassword" ng-model="vm.confirmPasswordSignUp" required>
       <div ng-if="userSignUp.confpassword.$touched" ng-messages="userSignUp.confpassword.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
         <div ng-message="minlength" class="red">* Min lenght password 5.</div>
         <div ng-if="vm.passwordSignUp != vm.confirmPasswordSignUp" class="red">* Confirm password not is pasword.</div>
       </div>
-      <hr>
-      <input type="submit" class="btn btn-success pull-right" value="SignUp">
-    </form>
+    </md-input-container>
 
-    <a ui-sref="site.books" class="btn btn-primary pull-left"><i class="fa fa-arrow-left rm-i"></i>Back</a>
-    <div class="clearfix"></div>
-  </div>
-</div>
+    <div layout="row" layout-align="space-between center">
+      <md-button type="submit" class="green">Create</md-button>
+      <md-button class="md-icon-button blue">
+        <md-icon class="material-icons" ui-sref="site.books">home</md-icon>
+      </md-button> 
+      <md-button ui-sref="auth.signin" class="blue">SignIn</md-button>
+    </div>
+
+  </form>
+</md-content>

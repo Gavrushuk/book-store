@@ -1,5 +1,5 @@
 angular.module('book-store.site')
-  .controller('SignInCtrl', ['$state', 'AuthService', '$timeout', function($state, AuthService, $timeout) {
+  .controller('SignInCtrl', ['$state', 'AuthService', '$timeout', '$scope', '$mdToast', function($state, AuthService, $timeout, $scope, $mdToast) {
     
     var vm = this;
 
@@ -7,13 +7,14 @@ angular.module('book-store.site')
       $state.go('site.books');
     }
 
-    vm.showAlert = +localStorage.alert === 1;
-    vm.aletrSignIn = localStorage.alert;
-
-    $timeout(function() {
-      vm.showAlert = false;
-      localStorage.alert = 0;
-    }, 3000);
+    $scope.showSimpleToast = function(text) {
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(text)
+          .position('')
+          .hideDelay(3000)
+      );
+    };
 
     vm.signIn = function() {
       
@@ -36,11 +37,12 @@ angular.module('book-store.site')
             localStorage.setItem('user', vm.checkUserAuth[0].login);
             localStorage.setItem('status', vm.checkUserAuth[0].status);
             localStorage.setItem('alert', 1);
-            console.log('Autoresation is success! Welcome to site ' + vm.checkUserAuth[0].login);
 
           }
 
         });
+
+        $scope.showSimpleToast('Welcome! Autoresation is success!');
 
     }
 

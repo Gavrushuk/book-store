@@ -5,7 +5,7 @@
   </div>
 </div>-->
 
-<md-card ng-repeat="book in vm.books | filter: search">
+<md-card ng-repeat="book in vm.books | filter: search" class="adaptiv">
   <md-card-title ui-sref="site.book({id: book.id})">
     <md-card-title-text>
       <span class="md-headline">{{book.title}}</span>
@@ -18,8 +18,8 @@
   </md-card-title>
   <md-card-actions layout="row" layout-align="space-between center">
     <p class="red">{{book.price}} $</p>
-    <md-button ng-click="vm.queryParse(book.id, book.title, book.price)">
-      <md-icon class="material-icons">add_shopping_cart</md-icon>
+    <md-button ng-click="vm.queryParse(book.id, book.title, book.price)" class="green">
+      <md-icon class="material-icons green">add_shopping_cart</md-icon>
     </md-button>
   </md-card-actions>
 </md-card>

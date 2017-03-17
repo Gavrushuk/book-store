@@ -16,6 +16,7 @@ angular.module('book-store.site')
             for (var i = 0; i < res.rows.length; i++) {
               vm.loginCreated.push(res.rows.item(i));
             }
+            console.log(vm.loginCreated);
 
             AuthService
               .checkUserPhone(vm.phoneSignUp)
@@ -24,23 +25,24 @@ angular.module('book-store.site')
                 for (var i = 0; i < res.rows.length; i++) {
                   vm.phoneCreated.push(res.rows.item(i));
                 }
+                console.log(vm.phoneCreated);
                 
-                if (vm.loginCreated.length == 0 || vm.phoneCreated.length == 0) {
+                if (vm.loginCreated.length == 0 && vm.phoneCreated.length == 0) {
     
-                AuthService
-                  .createUser({
-                    first_name: vm.firstNameSignUp,
-                    last_name: vm.lastNameSignUp,
-                    email: vm.emailSignUp,
-                    phone: vm.phoneSignUp,
-                    login: vm.loginSignUp,
-                    password: vm.passwordSignUp,
-                    status: vm.checkUserAdmin.status
-                  });
+                  AuthService
+                    .createUser({
+                      first_name: vm.firstNameSignUp,
+                      last_name: vm.lastNameSignUp,
+                      email: vm.emailSignUp,
+                      phone: vm.phoneSignUp,
+                      login: vm.loginSignUp,
+                      password: vm.passwordSignUp,
+                      status: vm.checkUserAdmin.status
+                    });
 
-                  localStorage.setItem('alert', 1);
+                    localStorage.setItem('alert', 1);
 
-                  $state.go('auth.signin');
+                    $state.go('auth.signin');
     
                 } else {
 

@@ -15,6 +15,10 @@
   color: white;
 }
 
+.blue {
+  color: rgb(63,81,181);
+}
+
 .image_book {
   width: 240px !important;
   height: 200px !important; 
@@ -205,8 +209,20 @@ ul {
   margin-right: 16px;
 }
 
-@media (min-width: 992px) {
-  .books li:nth-child(3n+2) {
-    padding: 0 15px !important;
+.signup_control {
+  overflow-x: hidden;
+}
+
+.books_line_style {
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 10px 16px !important;
+}
+
+@media (min-width: 769px) {
+  .adaptiv {
+    display: inline-block;
+    width: 48%;
   }
 }

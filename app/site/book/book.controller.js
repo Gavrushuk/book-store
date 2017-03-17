@@ -23,7 +23,7 @@ angular.module('book-store.site')
         vm.queryParse = function() {
 
           BookService
-            .queryParse(vm.books[0].bookid)
+            .queryParse(vm.books[0].id)
             .then(function(res) {
               vm.query = [];
               for(var i=0; i < res.rows.length; i++){
@@ -35,8 +35,8 @@ angular.module('book-store.site')
                 BookService
                   .addToCart(
                     {
-                      bookid: vm.books[0].bookid,
-                      booktitle: vm.books[0].booktitle,
+                      bookid: vm.books[0].id,
+                      booktitle: vm.books[0].title,
                       query: 1,
                       price: vm.books[0].price
                     }

@@ -1,26 +1,30 @@
-<div class="alert alert-success" role="alert" ng-if="vm.showAlert"><b>Well done!!! Registration is success!</b></div>
-
-<div class="panel panel-default">
-  <div class="panel-heading text-center">
-    <h3 class="panel-title">SignIn</h3>
-  </div>
-  <div class="panel-body">
-    <form ng-submit="vm.signIn()" name="userSignIn">
-      <label for="login">Login:</label>
+<md-content layout-padding>
+  <form ng-submit="vm.signIn()" name="userSignIn">
+    <md-input-container class="md-icon-float md-block">
+      <label>Login</label>
+      <md-icon class="material-icons">account_box</md-icon>
       <input class="form-control" type="text" id="login" name="login" ng-model="vm.loginSignIn" required>
       <div ng-if="userSignIn.login.$touched" ng-messages="userSignIn.login.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>
-      <br>
-      <label for="password">Password:</label>
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <label>Password</label>
+      <md-icon class="material-icons">lock</md-icon>
       <input class="form-control" type="password" id="password" name="password" maxlength="20" ng-model="vm.passwordSignIn" required>
       <div ng-if="userSignIn.password.$touched" ng-messages="userSignIn.password.$error">
         <div ng-message="required" class="red">* Please enter a value for this field.</div>
       </div>
-      <hr>
-      <input class="btn btn-success pull-left" type="submit" value="SignIn">
-    </form>
-    <a ui-sref="auth.signup" class="btn btn-primary pull-right">Sign Up</a>
-    <div class="clearfix"></div>
-  </div>
-</div>
+    </md-input-container>
+
+    <div layout="row" layout-align="space-between center">
+      <md-button type="submit" class="green">SignIn</md-button>
+      <md-button class="md-icon-button blue">
+        <md-icon class="material-icons" ui-sref="site.books">home</md-icon>
+      </md-button>
+      <md-button ui-sref="auth.signup" class="blue">SignUp</md-button>
+    </div>
+
+  </form>
+</md-content>
